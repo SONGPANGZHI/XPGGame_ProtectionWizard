@@ -19,8 +19,8 @@ public class GameManage : Singleton<GameManage>
 
     public GameStateType gameStateType;
     public GameObject player;
-    public GameObject canvas;
     public GameObject enemy;
+    public GameObject enemySecond;
     public PlayerManager playerManager;
     public int getTotalScore;//得分界面显示的得分
 
@@ -63,8 +63,7 @@ public class GameManage : Singleton<GameManage>
 
     }
 
-    private bool jsonSecond = false;
-    [SerializeField]
+    public bool jsonSecond = false;
     private bool whetherUnlock=false;//第二关解锁标志
     [SerializeField] 
     DialogueTreeController treeSecondC;
@@ -243,6 +242,7 @@ public class GameManage : Singleton<GameManage>
                 ScoreManagement.Instance.TotalScore = 0;
                 currentCount = 0;
                 enemy.SetActive(false);
+                enemySecond.SetActive(false);
 
                 break;
             case GameStateType.TheFirstPass:
@@ -250,6 +250,7 @@ public class GameManage : Singleton<GameManage>
                 playerManager.canAttack = true;
                 player.SetActive(true);
                 enemy.SetActive(true);
+                enemySecond.SetActive(false);
 
 
                 //打开游戏UI面板
@@ -263,13 +264,15 @@ public class GameManage : Singleton<GameManage>
                 // ----------------------------------------------------(第二关)
                 playerManager.canAttack = true;
                 player.SetActive(true);
-                enemy.SetActive(true);
+                enemy.SetActive(false);
+                enemySecond.SetActive(true);
                 break;
             case GameStateType.GameEnd:
                 // 游戏结束时的逻辑------时间等于0结束游戏
                 playerManager.canAttack = false;
                 player.SetActive(false);
                 enemy.SetActive(false);
+                enemySecond.SetActive(false);
 
                 //弹出结束面板
                 //结束怪物生成------CancelInvoke(“怪物生成方法”);

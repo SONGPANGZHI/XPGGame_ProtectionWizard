@@ -57,6 +57,7 @@ public class MonsterGenerationMagsT : MonoBehaviour
     //生成多个善良怪
     public void SpawnMultipleMonsters()
     {
+        score = ScoreManagement.Instance.TotalScore;
         if (score>=0 && score < 100)//只生成npc和一种怪
         {
             for (int i = 0; i < RandomMonterNum(); i++)
@@ -141,7 +142,7 @@ public class MonsterGenerationMagsT : MonoBehaviour
     //生成最少一个
     public void SpawnOneMonsters()
     {
-
+        score = ScoreManagement.Instance.TotalScore;
         if (score >= 0 && score < 100)
         {
             for (int i = 0; i < RandomMonterNum(); i++)

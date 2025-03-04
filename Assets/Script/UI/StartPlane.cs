@@ -41,6 +41,13 @@ public class StartPlane : MonoBehaviour
         }
 
     }
+    private void OnEnable()
+    {
+        if (GameManage.Instance.jsonSecond)
+        {
+            secondBTN.gameObject.SetActive(true);
+        }
+    }
     //¿ªÊ¼
     public void StartClick()
     {
@@ -74,9 +81,15 @@ public class StartPlane : MonoBehaviour
             return;
 
         if (GameManage.Instance.FindPersonByName(UserLoginPlane.userNameLabel).jsonSecond)
+        {
+            GameManage.Instance.jsonSecond = true;
             secondBTN.gameObject.SetActive(true);
+        }
         else
+        {
+            GameManage.Instance.jsonSecond = false;
             secondBTN.gameObject.SetActive(false);
+        }
     }
 
     //ÍË³ö

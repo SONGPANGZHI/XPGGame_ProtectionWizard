@@ -61,7 +61,7 @@ public class LoadingPlane : MonoBehaviour
     public void PlayGame()
     {
         CameraPositionRecorderEasy.Instance.MoveMainCameraToRecordedPosition(1);
-        Debug.LogError("开始游戏");
+        //Debug.LogError("开始游戏");
         GameManage.Instance.gameStateType = GameManage.GameStateType.TheFirstPass;
         GameManage.Instance.GameStateSet();
 
