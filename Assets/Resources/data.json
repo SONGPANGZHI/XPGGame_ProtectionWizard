@@ -1,0 +1,20 @@
+{
+    "entries": [
+        {
+            "name": "Alice",
+            "jsonSecond": true
+        },
+        {
+            "name": "Bob",
+            "jsonSecond": false
+        },
+        {
+            "name": "Charlie",
+            "jsonSecond": true
+        },
+        {
+            "name": "1234566",
+            "jsonSecond": false
+        }
+    ]
+}
