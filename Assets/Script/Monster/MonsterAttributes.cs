@@ -119,9 +119,9 @@ public class MonsterAttributes : MonoBehaviour
     public void HitScore()
     {
         monterAnimType = MonterAnimType.Die;
-        Invoke("SetColli", 1.5f);
-        Invoke("DelayDestroyMonter",2f);
-        Invoke("PlayAnimatorDie", 0.3f);
+        Invoke("SetColli", 1.5f);//时间可以延长点
+        Invoke("DelayDestroyMonter",2f);//时间可以延长点
+        Invoke("PlayAnimatorDie", 0.5f);
     }
 
     public GameObject moleVFX;

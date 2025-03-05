@@ -36,7 +36,9 @@ public class PlayerManager : MonoBehaviour
 
         if (canMove)
         {
+            //player.GetComponent<Animator>().SetTrigger("Run");
             CharacterControl();
+            
         }
 
         if (Input.GetMouseButtonDown(0)&& canAttack) // 检测鼠标左键是否被按下
@@ -88,7 +90,7 @@ public class PlayerManager : MonoBehaviour
 
 
         //镜头抖动
-        Invoke("Shake", 0.3f);
+        Invoke("Shake", 0.5f);
         
         animatorP.SetTrigger("Attack");
         if (attackCube.activeSelf==false)
