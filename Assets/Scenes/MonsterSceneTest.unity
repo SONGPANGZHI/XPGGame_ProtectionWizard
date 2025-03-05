@@ -2849,6 +2849,7 @@ MonoBehaviour:
   counterText: {fileID: 1069561367}
   currentCount: 0
   parentT: {fileID: 609079145}
+  secondNpcHp: 2
   jsonFilePath: 
   personList: []
 --- !u!114 &773701853
