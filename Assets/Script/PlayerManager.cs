@@ -120,7 +120,10 @@ public class PlayerManager : MonoBehaviour
                 {
                     other.transform.parent.GetComponent<MonsterAttributes>().TriggerOnce = true;
                     other.transform.parent.GetComponent<MonsterAttributes>().HitScore();
-                    ScoreManagement.Instance.DeductionScore(20);
+                    if (!other.transform.parent.GetComponent<MonsterAttributes>().Goodness2)
+                    {
+                        ScoreManagement.Instance.DeductionScore(20);
+                    }
                     DoubleHitManager.Instance.ClearDoubleHitCount();
                     isProcessing = true;
                 }
@@ -135,11 +138,35 @@ public class PlayerManager : MonoBehaviour
                     //DoubleHitManager.Instance.DoubleHitTimes();
                     if (DoubleHitManager.Instance.DoubleHitTimes() > 3)
                     {
-                        DoubleHitManager.Instance.JudgeDoubleHit();
+                        if (other.transform.parent.GetComponent<MonsterAttributes>().Evil2)
+                        {
+                            DoubleHitManager.Instance.JudgeDoubleHit(20);
+                        }
+                        else if (other.transform.parent.GetComponent<MonsterAttributes>().Evil3)
+                        {
+                            DoubleHitManager.Instance.JudgeDoubleHit(30);
+                        }
+                        else
+                        {
+                            DoubleHitManager.Instance.JudgeDoubleHit(10);
+                        }
                         Debug.LogError("开始计算连击");
                     }
                     else
-                        ScoreManagement.Instance.GetScore(10);
+                    {
+                        if (other.transform.parent.GetComponent<MonsterAttributes>().Evil2)
+                        {
+                            ScoreManagement.Instance.GetScore(20);
+                        }
+                        else if (other.transform.parent.GetComponent<MonsterAttributes>().Evil3)
+                        {
+                            ScoreManagement.Instance.GetScore(30);
+                        }
+                        else
+                        {
+                            ScoreManagement.Instance.GetScore(10);
+                        }
+                    }
                     GameManage.Instance.currentCount += 1;
                     isProcessing = true;
                 }

@@ -20,20 +20,20 @@ public class DoubleHitManager : MonoBehaviour
     }
 
     //Á¬»÷´ÎÊýÅÐ¶Ï
-    public void JudgeDoubleHit()
+    public void JudgeDoubleHit(int a)
     {
         doubleHitScore = 0;
         if (doubleHitCount > 3 && doubleHitCount <= 5)
         {
-            doubleHitScore = 10 * times_3;
+            doubleHitScore = a * times_3;
         }
         else if (doubleHitCount > 5 && doubleHitCount <= 8)
         {
-            doubleHitScore = 10 * times_5;
+            doubleHitScore = a * times_5;
         }
         else if (doubleHitCount > 8)
         {
-            doubleHitScore = 10 * times_8;
+            doubleHitScore = a * times_8;
         }
         ScoreManagement.Instance.GetScore((int)doubleHitScore);
         if (!timewait)

@@ -40,6 +40,12 @@ public class MonsterAttributes : MonoBehaviour
     [SerializeField]
     private GameObject warningTip;
 
+    public bool Goodness2;//是否是第二关npc
+
+    public bool Evil2;//是否是第二关其他分值小怪   20
+
+    public bool Evil3;//是否是第二关其他分值小怪   30
+
     public bool TriggerOnce = false;
     
     private void OnEnable()
@@ -125,15 +131,38 @@ public class MonsterAttributes : MonoBehaviour
             case MonterType.Goodness:
                 //Debug.Log("减20分");
                 SoundManagement.Instance.PlaySFX(2);
-                ShowFloatingText(this.transform.position, "-20");
+                if (Goodness2)
+                {
+                    GameManage.Instance.secondNpcHp -= 1;
+                }
+                else
+                {
+                    ShowFloatingText(this.transform.position, "-20");
+                }
                 break;
             case MonterType.Evil:
                 //Debug.Log("加10分");
                 SoundManagement.Instance.PlaySFX(1);
                 if (DoubleHitManager.Instance.doubleHitScore == 0)
-                    ShowFloatingText(this.transform.position, "10");
+                {
+                    if (Evil2)
+                    {
+                        ShowFloatingText(this.transform.position, "20");
+                    }else if (Evil3)
+                    {
+                        ShowFloatingText(this.transform.position, "30");
+                    }
+                    else
+                    {
+                        ShowFloatingText(this.transform.position, "10");
+                    }
+
+                }
                 else
-                    ShowFloatingText(this.transform.position, DoubleHitManager.Instance.doubleHitScore.ToString()) ;
+                {
+                    ShowFloatingText(this.transform.position, DoubleHitManager.Instance.doubleHitScore.ToString());
+                }
+                    
                 break;
         }
     }

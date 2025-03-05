@@ -116,6 +116,14 @@ public class GameManage : Singleton<GameManage>
             GameStateSet();
             InterfaceManagement.Instance.OpenGameOverPlane();
         }
+        //npcËÀÍöÓÎÏ·½áÊø
+        if (gameStateType == GameStateType.TheSecondPass && secondNpcHp <= 0)
+        {
+            getTotalScore = ScoreManagement.Instance.TotalScore;
+            gameStateType = GameStateType.GameEnd;
+            GameStateSet();
+            InterfaceManagement.Instance.OpenGameOverPlane();
+        }
 
     }
 
@@ -227,6 +235,7 @@ public class GameManage : Singleton<GameManage>
     }
     #endregion
 
+    public int secondNpcHp = 2;
 
     #region ÓÎÏ·×´Ì¬
     //ÓÎÏ·×´Ì¬
@@ -239,6 +248,7 @@ public class GameManage : Singleton<GameManage>
                 playerManager.canAttack = false;
                 player.SetActive(false);
                 currentTime = 180;
+                secondNpcHp = 2;
                 ScoreManagement.Instance.TotalScore = 0;
                 currentCount = 0;
                 enemy.SetActive(false);
