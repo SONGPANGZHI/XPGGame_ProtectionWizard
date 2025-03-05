@@ -123,8 +123,11 @@ public class MonsterAttributes : MonoBehaviour
         Invoke("DelayDestroyMonter",2f);
         Invoke("PlayAnimatorDie", 0.3f);
     }
+
+    public GameObject moleVFX;
     public void PlayAnimatorDie()
     {
+        moleVFX.SetActive(true);
         animatorE.SetTrigger("Die");
         switch (monterType)
         {
