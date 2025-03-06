@@ -969,6 +969,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1237283773111477490, guid: b36c1af63f8c15a42aedbe5b969af7f6, type: 3}
+      propertyPath: monsterDescPlane
+      value: 
+      objectReference: {fileID: 195160920}
     - target: {fileID: 1237283773111477491, guid: b36c1af63f8c15a42aedbe5b969af7f6, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1081,8 +1085,76 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4695243244194100236, guid: b36c1af63f8c15a42aedbe5b969af7f6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 345
+      objectReference: {fileID: 0}
+    - target: {fileID: 4695243244194100236, guid: b36c1af63f8c15a42aedbe5b969af7f6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 345
+      objectReference: {fileID: 0}
+    - target: {fileID: 4695243244194100239, guid: b36c1af63f8c15a42aedbe5b969af7f6, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4695243244194100239, guid: b36c1af63f8c15a42aedbe5b969af7f6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9fc8b860a709a8446a51f2b764de4d17, type: 3}
+    - target: {fileID: 4695243244266047068, guid: b36c1af63f8c15a42aedbe5b969af7f6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b36c1af63f8c15a42aedbe5b969af7f6, type: 3}
+--- !u!1 &195160920 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4695243244266047068, guid: b36c1af63f8c15a42aedbe5b969af7f6, type: 3}
+  m_PrefabInstance: {fileID: 195160919}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &195160921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195160920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b453e14287040534d813ab6bd7e84836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterIcon: {fileID: 195160922}
+  monsterDesc: {fileID: 195160923}
+  newMonstersList:
+  - monsterDesc: This bonus is 10 points
+    MonsterIcon: {fileID: 21300000, guid: 6bec1743e2c36a441b76e0b31ce7caee, type: 3}
+  - monsterDesc: This bonus is 20 points
+    MonsterIcon: {fileID: 21300000, guid: 9fc8b860a709a8446a51f2b764de4d17, type: 3}
+  - monsterDesc: This bonus is 30 points
+    MonsterIcon: {fileID: 21300000, guid: 1a23eaf2ff872404495da714b4c34f7a, type: 3}
+--- !u!114 &195160922 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4695243244194100239, guid: b36c1af63f8c15a42aedbe5b969af7f6, type: 3}
+  m_PrefabInstance: {fileID: 195160919}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &195160923 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4695243245125721710, guid: b36c1af63f8c15a42aedbe5b969af7f6, type: 3}
+  m_PrefabInstance: {fileID: 195160919}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &204474254
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MonsterGenerationMagsT : MonoBehaviour
@@ -72,21 +73,21 @@ public class MonsterGenerationMagsT : MonoBehaviour
                 }
             }
         }
-        else if(score >= 100 && score < 200)
-        {
-            for (int i = 0; i < RandomMonterNum(); i++)
-            {
-                if (i < goodnessMonsterNum)
-                {
-                    GameObject ga = Instantiate(goodnessPrefab2, monsterPointList[i].transform);
-                }
-                else
-                {
-                    GameObject ga = Instantiate(evilPrefab2, monsterPointList[i].transform);
-                }
-            }
-        }
-        else if (score >= 200 && score < 300)
+        //else if(score >= 100 && score < 200)
+        //{
+        //    for (int i = 0; i < RandomMonterNum(); i++)
+        //    {
+        //        if (i < goodnessMonsterNum)
+        //        {
+        //            GameObject ga = Instantiate(goodnessPrefab2, monsterPointList[i].transform);
+        //        }
+        //        else
+        //        {
+        //            GameObject ga = Instantiate(evilPrefab2, monsterPointList[i].transform);
+        //        }
+        //    }
+        //}
+        else if (score >= 100 && score < 200)
         {
             int a = RandomMonterNum() - goodnessMonsterNum;
             int cubeCount = Random.Range(1, a);
@@ -106,7 +107,7 @@ public class MonsterGenerationMagsT : MonoBehaviour
                 }
             }
         }
-        else if (score >= 300)
+        else if (score >= 200)
         {
             int num = RandomMonterNum() - goodnessMonsterNum;//6-2  4
             int a = Random.Range(1, num - 1);//（1,3）                1和2之间随机 2
@@ -139,6 +140,12 @@ public class MonsterGenerationMagsT : MonoBehaviour
 
     //1个npc的情况
 
+    bool firstBool;
+    bool secondBool;
+    bool thirdBool;
+
+
+
     //生成最少一个
     public void SpawnOneMonsters()
     {
@@ -156,22 +163,29 @@ public class MonsterGenerationMagsT : MonoBehaviour
                     GameObject ga = Instantiate(evilPrefab1, monsterPointList[i].transform);
                 }
             }
-        }
-        else if(score >= 100 && score < 200)
-        {
-            for (int i = 0; i < RandomMonterNum(); i++)
+
+            if (!firstBool)
             {
-                if (i == 0)
-                {
-                    GameObject ga = Instantiate(goodnessPrefab2, monsterPointList[i].transform);
-                }
-                else
-                {
-                    GameObject ga = Instantiate(evilPrefab2, monsterPointList[i].transform);
-                }
+                firstBool = true;
+                ShowMonsterDescPlane(0);
             }
+                
         }
-        else if (score >= 200 && score < 300)
+        //else if(score >= 100 && score < 200)
+        //{
+        //    for (int i = 0; i < RandomMonterNum(); i++)
+        //    {
+        //        if (i == 0)
+        //        {
+        //            GameObject ga = Instantiate(goodnessPrefab2, monsterPointList[i].transform);
+        //        }
+        //        else
+        //        {
+        //            GameObject ga = Instantiate(evilPrefab2, monsterPointList[i].transform);
+        //        }
+        //    }
+        //}
+        else if (score >= 100 && score < 200)
         {
             int a = RandomMonterNum() - 1;//                5
             int cubeCount = Random.Range(1, a);//1到4之间   3
@@ -191,8 +205,14 @@ public class MonsterGenerationMagsT : MonoBehaviour
                     GameObject ga = Instantiate(evilPrefab2, monsterPointList[i].transform);
                 }
             }
+
+            if (!secondBool)
+            {
+                secondBool = true;
+                ShowMonsterDescPlane(1);
+            }
         }
-        else if (score >= 300)
+        else if (score >= 200)
         {
             int num = RandomMonterNum() - 1;//6-1           5
             int a = Random.Range(1, num - 1);//1---4        1和3之间随机 3
@@ -220,6 +240,12 @@ public class MonsterGenerationMagsT : MonoBehaviour
                     GameObject ga = Instantiate(evilPrefab3, monsterPointList[i].transform);
                 }
             }
+
+            if (!thirdBool)
+            {
+                thirdBool = true;
+                ShowMonsterDescPlane(2);
+            }
         }
 
 
@@ -246,6 +272,14 @@ public class MonsterGenerationMagsT : MonoBehaviour
             DoubleHitManager.Instance.DebugColorRed("本轮至少有一个善良的小怪");
             return 1;
         }
+
+    }
+
+    //显示怪物提醒界面
+    public void ShowMonsterDescPlane(int ID)
+    {
+        //Time.timeScale = 0;
+        InterfaceManagement.Instance.OpenMonsterDescPlane(ID);
 
     }
 

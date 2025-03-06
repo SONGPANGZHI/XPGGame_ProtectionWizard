@@ -47,6 +47,8 @@ public class MonsterAttributes : MonoBehaviour
     public bool Evil3;//是否是第二关其他分值小怪   30
 
     public bool TriggerOnce = false;
+
+    private bool dieAnim;
     
     private void OnEnable()
     {
@@ -94,8 +96,12 @@ public class MonsterAttributes : MonoBehaviour
     //播放消失动画
     public void PlayDiappear()
     {
-        animatorObj.Play("Disappear");
-        Invoke("DestroyMonter", 1f);
+        if (!dieAnim)
+        {
+            animatorObj.Play("Disappear");
+            Invoke("DestroyMonter", 1f);
+        }
+        
     }
 
     public void MonsterState()
@@ -136,6 +142,7 @@ public class MonsterAttributes : MonoBehaviour
     public void PlayAnimatorDie()
     {
         moleVFX.SetActive(true);
+        dieAnim = true;
         animatorE.SetTrigger("Die");
         switch (monterType)
         {

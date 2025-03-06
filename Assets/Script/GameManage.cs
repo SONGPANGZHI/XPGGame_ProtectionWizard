@@ -272,6 +272,7 @@ public class GameManage : Singleton<GameManage>
 
             case GameStateType.TheSecondPass:
                 // ----------------------------------------------------(ตฺถþนุ)
+                InterfaceManagement.Instance.gameUIPlane.GetComponent<GameUI>().InitPlayHp();
                 playerManager.canAttack = true;
                 player.SetActive(true);
                 enemy.SetActive(false);
@@ -303,6 +304,7 @@ public class GameManage : Singleton<GameManage>
         gameStateType = GameStateType.GameStart;
         GameStateSet();
         InterfaceManagement.Instance.CloseAllPlane();
+        InterfaceManagement.Instance.gameUIPlane.GetComponent<GameUI>().InitPlayHp();
         CameraPositionRecorderEasy.Instance.MoveMainCameraToRecordedPosition(0);
         treeSecondC.StartDialogue();
     }

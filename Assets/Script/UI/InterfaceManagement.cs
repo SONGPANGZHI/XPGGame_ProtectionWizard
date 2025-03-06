@@ -12,7 +12,7 @@ public class InterfaceManagement : MonoBehaviour
     public GameObject gameOverPlane;
     public GameObject userLoginPlane;
     public GameObject selectLevelPlane;
-
+    public GameObject monsterDescPlane;
     private void Awake()
     {
         if(Instance == null)
@@ -68,6 +68,13 @@ public class InterfaceManagement : MonoBehaviour
         selectLevelPlane.SetActive(true);
     }
 
+    //打开怪物介绍
+    public void OpenMonsterDescPlane(int ID)
+    {
+        monsterDescPlane.SetActive(true);
+        monsterDescPlane.GetComponent<MonsterIntroductionPlane>().InitMonsterDesc(ID);
+    }
+
     //关闭所有界面
     public void CloseAllPlane()
     {
@@ -77,5 +84,6 @@ public class InterfaceManagement : MonoBehaviour
         gameOverPlane.SetActive(false);
         userLoginPlane.SetActive(false);
         selectLevelPlane.SetActive(false);
+        monsterDescPlane.SetActive(false);
     }
 }
