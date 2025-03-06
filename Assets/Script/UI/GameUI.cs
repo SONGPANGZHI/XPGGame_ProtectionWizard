@@ -1,44 +1,43 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Networking.Types;
 
 public class GameUI : MonoBehaviour
 {
     [SerializeField]
-    private TMP_Text timer_Text;
+    private GameObject hpPrefabs;
 
     [SerializeField]
-    private TMP_Text monterNum_Text;
+    private Transform hpTrans;
 
-    [SerializeField]
-    private TMP_Text score_Text;
+    private int playHPTotal;
 
-    //数据初始化
-    public void GameUIInit()
+    private void Start()
     {
-        UpdateScroe();
-        HitMonterNum();
+        if (GameManage.Instance.isSecond)
+            InitPlayHp();
     }
 
-    //刷新时间
-    
+    //初始化血条
 
-    //获取怪物总数
-    public int GetMontserNum()
+    public void InitPlayHp()
     {
-        return 0;
+        playHPTotal = GameManage.Instance.secondNpcHp;
+
+        for (int i = 0; i < playHPTotal; i++)
+        {
+            GameObject go = Instantiate(hpPrefabs, hpTrans);
+        }
     }
 
-    //刷新击打怪物数量
-    public void HitMonterNum()
-    { 
-        int hitNum = 0;
-        monterNum_Text.text = hitNum + "/" + GetMontserNum();
-    }
 
-    //刷新得分
-    public void UpdateScroe()
+    //扣血
+    public void ReduceHP()
     {
-        score_Text.text = ScoreManagement.Instance.TotalScore.ToString();
+        playHPTotal -= 1;
+        hpTrans.GetChild(playHPTotal).GetComponent<HpPrefab>().CloseHPRed();
+       
     }
 
 }

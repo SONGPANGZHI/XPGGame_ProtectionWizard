@@ -78,7 +78,7 @@ public class GameManage : Singleton<GameManage>
         {
             KeepTime();
             Score();
-            UpdateCounterText();
+            //UpdateCounterText();
         }
 
         if (ScoreManagement.Instance.TotalScore>=1000 && whetherUnlock==false)

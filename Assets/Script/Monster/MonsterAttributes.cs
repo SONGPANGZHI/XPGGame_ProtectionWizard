@@ -68,7 +68,7 @@ public class MonsterAttributes : MonoBehaviour
     //1.5s后 预警结束开始生成怪
     public void WarningTipEnd()
     {
-        Invoke("DestroyMonter", TimeToLive());
+        Invoke("PlayDiappear", TimeToLive());
     }
 
 
@@ -90,6 +90,14 @@ public class MonsterAttributes : MonoBehaviour
         }
 
     }
+
+    //播放消失动画
+    public void PlayDiappear()
+    {
+        animatorObj.Play("Disappear");
+        Invoke("DestroyMonter", 1f);
+    }
+
     public void MonsterState()
     {
         switch (monterAnimType)
@@ -136,6 +144,7 @@ public class MonsterAttributes : MonoBehaviour
                 SoundManagement.Instance.PlaySFX(2);
                 if (Goodness2)
                 {
+                    InterfaceManagement.Instance.gameUIPlane.GetComponent<GameUI>().ReduceHP();
                     GameManage.Instance.secondNpcHp -= 1;
                 }
                 else

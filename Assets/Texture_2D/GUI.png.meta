@@ -336,8 +336,8 @@ TextureImporter:
         y: 1673
         width: 215
         height: 61
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 38, y: 15, z: 36, w: 14}
       outline: []
       physicsShape: []
@@ -694,7 +694,7 @@ TextureImporter:
         width: 122
         height: 125
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -749,10 +749,10 @@ TextureImporter:
       GUI_8: 21300016
       GUI_31: 21300062
       GUI_27: 21300054
-      GUI_60: 21300106
+      GUI_39: -1533469379
       GUI_28: 21300056
       GUI_5: 21300010
-      GUI_39: -1533469379
+      GUI_60: 21300106
       GUI_0: 21300000
       GUI_61: 21300108
       GUI_42: 21300074

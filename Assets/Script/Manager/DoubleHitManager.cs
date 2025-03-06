@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DoubleHitManager : MonoBehaviour
 {
@@ -9,14 +10,19 @@ public class DoubleHitManager : MonoBehaviour
     public int limitTime = 10;               //连击时间限制 暂定10s
     public float doubleHitScore;
 
+    public GameObject doubleHit_UI;
+    public SpriteRenderer value;
+
     private float times_3 = 1.2f;
     private float times_5 = 1.5f;
     private float times_8 = 2f;
     private bool timewait = false;
+
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
+
     }
 
     //连击次数判断
@@ -36,11 +42,16 @@ public class DoubleHitManager : MonoBehaviour
             doubleHitScore = a * times_8;
         }
         ScoreManagement.Instance.GetScore((int)doubleHitScore);
+
         if (!timewait)
         {
+            doubleHit_UI.SetActive(true);
+            RewardT = 10f;
+            sl.fillAmount = 1;
             DebugColorRed("开始计时");
             timewait = true;
             StartCoroutine(TimeFunc(limitTime));
+
         }
     }
 
@@ -63,6 +74,7 @@ public class DoubleHitManager : MonoBehaviour
     public void ClearDoubleHitCount()
     {
         doubleHitCount = 0;
+        doubleHit_UI.SetActive(false);
         DebugColorYellow("连击数清零：" + doubleHitCount);
     }
 
@@ -73,6 +85,31 @@ public class DoubleHitManager : MonoBehaviour
         DebugColorYellow("输出击打数：" + doubleHitCount);
         return doubleHitCount;
     }
+
+
+
+    public float RewardT = 10f;
+    public Image sl;
+
+    void Update()
+    {
+        if (doubleHit_UI.activeSelf)
+        {
+            SetSlider();
+        }
+            
+    }
+
+    public void SetSlider()
+    {
+        RewardT -= Time.deltaTime;
+        if (RewardT <= 0)
+        {
+            RewardT = 0;
+        }
+        sl.fillAmount = RewardT / 10f;
+    }
+
 
     #region DebugLog颜色
 
