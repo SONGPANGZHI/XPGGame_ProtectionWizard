@@ -1741,6 +1741,7 @@ MonoBehaviour:
   attackTime: 0.6
   animatorP: {fileID: 372588546}
   InceptionSet: 0
+  rb: {fileID: 372588550}
 --- !u!65 &372588549
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3723,6 +3724,7 @@ MonoBehaviour:
   attackTime: 0.6
   animatorP: {fileID: 797716265}
   InceptionSet: 0
+  rb: {fileID: 0}
 --- !u!95 &797716265 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6096312193273766057, guid: a48631e259d0486fa83621f7d8f36e72, type: 3}

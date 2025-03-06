@@ -26,19 +26,26 @@ public class PlayerManager : MonoBehaviour
 
     public bool InceptionSet=false;//初始设置
 
+    public Rigidbody rb;
+
     void Update()
     {
         //这两开始需要条件
 
-            //KeepTime();//计时
-            //Score();//得分
-            //UpdateCounterText();
+        //KeepTime();//计时
+        //Score();//得分
+        //UpdateCounterText();
 
         if (canMove)
         {
+            // 检查玩家是否有水平或垂直方向的输入
+            bool hasInput = Mathf.Abs(Input.GetAxis("Horizontal")) > 0f || Mathf.Abs(Input.GetAxis("Vertical")) > 0f;
             //player.GetComponent<Animator>().SetTrigger("Run");
-            CharacterControl();
-            
+            if (!hasInput)
+                rb.velocity = Vector3.zero;
+            else
+                CharacterControl();
+
         }
 
         if (Input.GetMouseButtonDown(0)&& canAttack) // 检测鼠标左键是否被按下

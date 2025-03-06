@@ -93,7 +93,7 @@ Transform:
   m_GameObject: {fileID: 1645243683033434456}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4166012090402068440}
@@ -649,7 +649,7 @@ Transform:
   m_GameObject: {fileID: 6786254121427176048}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 157285140921704524}
@@ -1120,26 +1120,6 @@ PrefabInstance:
     - target: {fileID: 2834388740668858265, guid: 90ffece102c8e004fad57d44ee14f340, type: 3}
       propertyPath: m_Name
       value: Area_generic_red_outbreak
-      objectReference: {fileID: 0}
-    - target: {fileID: 2834388740668858265, guid: 90ffece102c8e004fad57d44ee14f340, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2834388740682797903, guid: 90ffece102c8e004fad57d44ee14f340, type: 3}
-      propertyPath: looping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7166371240133060070, guid: 90ffece102c8e004fad57d44ee14f340, type: 3}
-      propertyPath: looping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7166371240565775204, guid: 90ffece102c8e004fad57d44ee14f340, type: 3}
-      propertyPath: looping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7166371240598376959, guid: 90ffece102c8e004fad57d44ee14f340, type: 3}
-      propertyPath: looping
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90ffece102c8e004fad57d44ee14f340, type: 3}
