@@ -94,9 +94,10 @@ public class MonsterGenerationMagsT : MonoBehaviour
         //}
         else if (score >= 100 && score < 200)
         {
-            int a = RandomMonterNum() - goodnessMonsterNum;
+            int num1 = RandomMonterNum();
+            int a = num1 - goodnessMonsterNum;
             int cubeCount = Random.Range(1, a);
-            for (int i = 0; i < RandomMonterNum(); i++)
+            for (int i = 0; i < num1; i++)
             {
                 if (i < goodnessMonsterNum)//2
                 {
@@ -106,7 +107,7 @@ public class MonsterGenerationMagsT : MonoBehaviour
                 {
                     GameObject ga = Instantiate(evilPrefab1, monsterPointList[i].transform);
                 }
-                else if (i >= goodnessMonsterNum+ cubeCount && i < RandomMonterNum())//(2-x)---总数
+                else if (i >= goodnessMonsterNum+ cubeCount && i < num1)//(2-x)---总数
                 {
                     GameObject ga = Instantiate(evilPrefab2, monsterPointList[i].transform);
                 }
@@ -119,13 +120,14 @@ public class MonsterGenerationMagsT : MonoBehaviour
         }
         else if (score >= 200)
         {
-            int num = RandomMonterNum() - goodnessMonsterNum;//6-2  4
+            int num1 = RandomMonterNum();
+            int num = num1 - goodnessMonsterNum;//6-2  4
             int a = Random.Range(1, num - 1);//（1,3）                1和2之间随机 2
             int circleCount = num - a;//4-2                 随到2     得到2
             int b = Random.Range(1, circleCount);//1---2    1
             int c = num - a - b;//                          1
             //0/1------2/3------4------5
-            for (int i = 0; i < RandomMonterNum(); i++)
+            for (int i = 0; i < num1; i++)
             {
                 if (i < goodnessMonsterNum)//2
                 {
@@ -139,7 +141,7 @@ public class MonsterGenerationMagsT : MonoBehaviour
                 {
                     GameObject ga = Instantiate(evilPrefab2, monsterPointList[i].transform);
                 }
-                else if (i >= goodnessMonsterNum + a + b && i < RandomMonterNum())
+                else if (i >= goodnessMonsterNum + a + b && i < num1)
                 {
                     GameObject ga = Instantiate(evilPrefab3, monsterPointList[i].transform);
                 }
@@ -202,10 +204,11 @@ public class MonsterGenerationMagsT : MonoBehaviour
         //}
         else if (score >= 100 && score < 200)
         {
-            int a = RandomMonterNum() - 1;//                5
+            int num1 = RandomMonterNum();//                5   5-1=4
+            int a = num1 - 1;
             int cubeCount = Random.Range(1, a);//1到4之间   3
             //0------1/2/3------4/5
-            for (int i = 0; i < RandomMonterNum(); i++)
+            for (int i = 0; i < num1; i++)
             {
                 if (i == 0)
                 {
@@ -215,7 +218,7 @@ public class MonsterGenerationMagsT : MonoBehaviour
                 {
                     GameObject ga = Instantiate(evilPrefab1, monsterPointList[i].transform);
                 }
-                else if (i > cubeCount && i < RandomMonterNum())
+                else if (i > cubeCount && i < num1)
                 {
                     GameObject ga = Instantiate(evilPrefab2, monsterPointList[i].transform);
                 }
@@ -229,14 +232,15 @@ public class MonsterGenerationMagsT : MonoBehaviour
         }
         else if (score >= 200)
         {
-            int num = RandomMonterNum() - 1;//6-1           5
-            int a = Random.Range(1, num - 1);//1---4        1和3之间随机 3
-            int circleCount = num - a;//5-3                 随到3
+            int num1 = RandomMonterNum();//5-1           4
+            int num = num1 - 1;
+            int a = Random.Range(1, num - 1);//1---3        1和2之间随机 2
+            int circleCount = num - a;//4-2                 2
             int b = Random.Range(1, circleCount);//1---2    1
             int c = num - a - b;//                          1
 
             //0------(1/2/3)------(4)------(5)
-            for (int i = 0; i < RandomMonterNum(); i++)
+            for (int i = 0; i < num1; i++)
             {
                 if (i == 0)
                 {
@@ -250,7 +254,7 @@ public class MonsterGenerationMagsT : MonoBehaviour
                 {
                     GameObject ga = Instantiate(evilPrefab2, monsterPointList[i].transform);
                 }
-                else if (i > a + b && i < RandomMonterNum())
+                else if (i > a + b && i<num1)
                 {
                     GameObject ga = Instantiate(evilPrefab3, monsterPointList[i].transform);
                 }
@@ -266,6 +270,7 @@ public class MonsterGenerationMagsT : MonoBehaviour
 
     }
 
+    //public int randomMN;
     //第一次随机生成怪物数量
     public int RandomMonterNum()
     {
