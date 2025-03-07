@@ -52,6 +52,7 @@ public class CameraPositionRecorderEasy : MonoBehaviour
         if (index >= 0 && index < recordedPositions.Count)
         {
             var targetTransform = recordedPositions[index];
+            Camera.main.gameObject.GetComponent<CameraShake>().initialPosition= targetTransform.position;
             Camera.main.transform.position = targetTransform.position;
             Camera.main.transform.rotation = targetTransform.rotation;
             Debug.Log("移动到记录位置: " + targetTransform.position + " 旋转: " + targetTransform.rotation.eulerAngles);

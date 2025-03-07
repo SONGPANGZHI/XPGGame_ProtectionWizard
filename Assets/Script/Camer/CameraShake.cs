@@ -8,7 +8,7 @@ public class CameraShake : MonoBehaviour
     private float shakeMagnitude = 0.7f;
     private float dampingSpeed = 1.0f;
 
-    Vector3 initialPosition;
+    public Vector3 initialPosition;
 
     void OnEnable()
     {

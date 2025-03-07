@@ -82,7 +82,7 @@ public class MonsterGenerationMags : MonoBehaviour
     //第一次随机生成怪物数量
     public int RandomMonterNum()
     {
-        int monterNum = Random.Range(randomMin, randomMax); 
+        int monterNum = Random.Range(randomMin, randomMax); //4-6---1-2个npc---
         return monterNum;
     }
 
