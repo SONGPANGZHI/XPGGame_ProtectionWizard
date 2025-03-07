@@ -11,6 +11,7 @@ public class DoubleHitManager : MonoBehaviour
     public float doubleHitScore;
 
     public GameObject doubleHit_UI;
+    public GameObject doubleHit_FVX;
 
     private float times_3 = 1.2f;
     private float times_5 = 1.5f;
@@ -45,6 +46,8 @@ public class DoubleHitManager : MonoBehaviour
         if (!timewait)
         {
             doubleHit_UI.SetActive(true);
+            Invoke("DelayTime", 0.3f);
+
             RewardT = 10f;
             sl.fillAmount = 1;
             DebugColorRed("开始计时");
@@ -54,6 +57,10 @@ public class DoubleHitManager : MonoBehaviour
         }
     }
 
+    public void DelayTime()
+    {
+        doubleHit_FVX.SetActive(true);
+    }
     //连击计时器 暂定10s
     private IEnumerator TimeFunc(float TimeCount)
     {
@@ -74,6 +81,7 @@ public class DoubleHitManager : MonoBehaviour
     {
         doubleHitCount = 0;
         doubleHit_UI.SetActive(false);
+        doubleHit_FVX.SetActive(false);
         DebugColorYellow("连击数清零：" + doubleHitCount);
     }
 
