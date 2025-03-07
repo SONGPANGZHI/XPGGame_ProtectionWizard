@@ -258,6 +258,7 @@ public class GameManage : Singleton<GameManage>
                 break;
             case GameStateType.TheFirstPass:
                 // 游戏进行中的逻辑------点击开始游戏按钮进行游戏------(第一关)
+                InterfaceManagement.Instance.gameUIPlane.GetComponent<GameUI>().ClearChild();
                 playerManager.canAttack = true;
                 player.SetActive(true);
                 enemy.SetActive(true);

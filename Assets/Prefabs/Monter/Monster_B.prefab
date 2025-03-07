@@ -257,8 +257,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6207827581259274947}
   - component: {fileID: 813807214142432753}
-  - component: {fileID: 6815511895661326347}
   - component: {fileID: 4244944415397397152}
+  - component: {fileID: 3634635262237479451}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Evil
@@ -302,19 +302,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!65 &6815511895661326347
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3748088806520741186}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.49, z: 0}
 --- !u!54 &4244944415397397152
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -331,6 +318,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
+--- !u!136 &3634635262237479451
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3748088806520741186}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.4
+  m_Height: 1.2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.51, z: 0}
 --- !u!1 &4442484238797676299
 GameObject:
   m_ObjectHideFlags: 0
