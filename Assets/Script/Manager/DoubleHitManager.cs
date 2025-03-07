@@ -11,7 +11,6 @@ public class DoubleHitManager : MonoBehaviour
     public float doubleHitScore;
 
     public GameObject doubleHit_UI;
-    public SpriteRenderer value;
 
     private float times_3 = 1.2f;
     private float times_5 = 1.5f;

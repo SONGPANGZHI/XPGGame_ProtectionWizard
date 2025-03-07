@@ -126,7 +126,6 @@ public class MonsterAttributes : MonoBehaviour
     }
     public void SetColli()
     {
-        //this.transform.GetChild(1).gameObject.GetComponent<BoxCollider>().enabled = false;
         animatorObj.Play("Die");
     }
 
@@ -136,6 +135,7 @@ public class MonsterAttributes : MonoBehaviour
     public void HitScore()
     {
         monterAnimType = MonterAnimType.Die;
+        dieAnim = true;
         Invoke("SetColli", 1.5f);//时间可以延长点
         Invoke("DelayDestroyMonter",2f);//时间可以延长点
         Invoke("PlayAnimatorDie", 0.5f);
@@ -145,7 +145,6 @@ public class MonsterAttributes : MonoBehaviour
     public void PlayAnimatorDie()
     {
         moleVFX.SetActive(true);
-        dieAnim = true;
         animatorE.SetTrigger("Die");
         switch (monterType)
         {
