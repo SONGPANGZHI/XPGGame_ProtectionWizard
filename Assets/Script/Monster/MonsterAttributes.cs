@@ -46,6 +46,8 @@ public class MonsterAttributes : MonoBehaviour
 
     public bool Evil3;//是否是第二关其他分值小怪   30
 
+    public int Evil3Int=0;
+
     public bool TriggerOnce = false;
 
     private bool dieAnim;
@@ -53,6 +55,7 @@ public class MonsterAttributes : MonoBehaviour
     private void OnEnable()
     {
         WarningTipShow();
+        Evil3Int = Random.Range(1, 3);
     }
     private void Update()
     {
@@ -169,7 +172,16 @@ public class MonsterAttributes : MonoBehaviour
                         ShowFloatingText(this.transform.position, "20");
                     }else if (Evil3)
                     {
-                        ShowFloatingText(this.transform.position, "30");
+                        
+                        if (Evil3Int == 1)
+                        {
+
+                            ShowFloatingText(this.transform.position, "20");
+                        }
+                        else if (Evil3Int == 2)
+                        {
+                            ShowFloatingText(this.transform.position, "-20");
+                        }
                     }
                     else
                     {

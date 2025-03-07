@@ -153,7 +153,12 @@ public class PlayerManager : MonoBehaviour
                         }
                         else if (other.transform.parent.GetComponent<MonsterAttributes>().Evil3)
                         {
-                            DoubleHitManager.Instance.JudgeDoubleHit(30);
+                            int a = other.transform.parent.GetComponent<MonsterAttributes>().Evil3Int;
+                            if (a==1)
+                            {
+                                DoubleHitManager.Instance.JudgeDoubleHit(20);
+                            }
+
                         }
                         else
                         {
@@ -169,7 +174,16 @@ public class PlayerManager : MonoBehaviour
                         }
                         else if (other.transform.parent.GetComponent<MonsterAttributes>().Evil3)
                         {
-                            ScoreManagement.Instance.GetScore(30);
+                            int a = other.transform.parent.GetComponent<MonsterAttributes>().Evil3Int;
+                            if (a == 1)
+                            {
+                                ScoreManagement.Instance.GetScore(20);
+                            }
+                            else if (a == 2)
+                            {
+                                ScoreManagement.Instance.DeductionScore(20);
+                                DoubleHitManager.Instance.ClearDoubleHitCount();
+                            }
                         }
                         else
                         {

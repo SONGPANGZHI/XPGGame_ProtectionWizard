@@ -26,7 +26,7 @@ public class ScoreManagement : MonoBehaviour
         if (currentScore<=0)
             TotalScore = 0;
         else
-            return TotalScore -= reduceNum;
+            return reduceNum;
 
         return 0;
     }

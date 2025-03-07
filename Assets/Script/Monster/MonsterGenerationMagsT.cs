@@ -72,6 +72,11 @@ public class MonsterGenerationMagsT : MonoBehaviour
                     GameObject ga = Instantiate(evilPrefab1, monsterPointList[i].transform);
                 }
             }
+            if (!firstBool)
+            {
+                firstBool = true;
+                ShowMonsterDescPlane(0);
+            }
         }
         //else if(score >= 100 && score < 200)
         //{
@@ -106,6 +111,11 @@ public class MonsterGenerationMagsT : MonoBehaviour
                     GameObject ga = Instantiate(evilPrefab2, monsterPointList[i].transform);
                 }
             }
+            if (!secondBool)
+            {
+                secondBool = true;
+                ShowMonsterDescPlane(1);
+            }
         }
         else if (score >= 200)
         {
@@ -133,6 +143,11 @@ public class MonsterGenerationMagsT : MonoBehaviour
                 {
                     GameObject ga = Instantiate(evilPrefab3, monsterPointList[i].transform);
                 }
+            }
+            if (!thirdBool)
+            {
+                thirdBool = true;
+                ShowMonsterDescPlane(2);
             }
         }
 
