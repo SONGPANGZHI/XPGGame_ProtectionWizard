@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class MonsterGenerationMags : MonoBehaviour
@@ -12,98 +14,90 @@ public class MonsterGenerationMags : MonoBehaviour
     [SerializeField]
     private GameObject evilPrefab;
 
-    [SerializeField]
-    private int randomMin = 4;
+    public List<FirstLevelMonsterWave> monsterWaveList;
 
-    [SerializeField]
-    private int randomMax = 7;
+    public List<FirstTrans> FirstTransList;
 
-    [SerializeField]
-    private int goodnessMonsterNum = 2;
+    //怪物、npc生成
+    public void CreateMonsterWave(int ID)
+    {
+        int monsterTotal = UnityEngine.Random.Range(monsterWaveList[ID].monsterMin, monsterWaveList[ID].monsterMax);
+        int _npcNum = monsterTotal - monsterWaveList[ID].npcNum;
+        monsterPointList.Shuffle();
+        for (int i = 0; i < monsterTotal; i++)
+        {
+            if (i < _npcNum)
+            {
+                GameObject ga = Instantiate(evilPrefab, monsterPointList[i].transform);
+            }
+            else
+            {
+                GameObject ga = Instantiate(goodnessPrefab, monsterPointList[i].transform);
+            }
+        }
+
+    }
+
+    //生成第一波次的怪
+    public void FirstMonster(int ID)
+    {
+        int monsterTotal = UnityEngine.Random.Range(monsterWaveList[ID].monsterMin, monsterWaveList[ID].monsterMax);
+        int _npcNum = monsterTotal - monsterWaveList[ID].npcNum;
+        int indexId = UnityEngine.Random.Range(0, FirstTransList.Count);
+
+        for (int i = 0; i < monsterTotal; i++)
+        {
+            if (i < _npcNum)
+            {
+                GameObject ga = Instantiate(evilPrefab, FirstTransList[indexId].transPos[i].transform);
+            }
+            else
+            {
+                GameObject ga = Instantiate(goodnessPrefab, FirstTransList[indexId].transPos[i].transform);
+            }
+        }
+
+    }
+
 
     private void OnEnable()
     {
-        FristCreateMonter();
-        InvokeRepeating("FristCreateMonter", 10f, 10f);
+        //InvokeRepeating(() => CreateMonsterWave(0), 10f, 10f);
+        FirstMonster(2);
+        InvokeRepeating("CreateMonter", 10f, 10f);
     }
+
+    public void CreateMonter()
+    {
+        if (monsterWaveList[0].monsterWave)
+            CreateMonsterWave(0);
+        if (monsterWaveList[1].monsterWave)
+            CreateMonsterWave(1);
+        if (monsterWaveList[2].monsterWave)
+            FirstMonster(2);
+    }
+
     private void OnDisable()
     {
-        CancelInvoke("FristCreateMonter");
+        CancelInvoke("CreateMonter");
     }
-    //第一次生成怪物
-    public void FristCreateMonter()
+
+    [Serializable]
+    public class FirstLevelMonsterWave
     {
-        monsterPointList.Shuffle();
-
-        int goodID = RandomMonterType();
-        if (goodID == 0)
-        {
-            //本轮多个善良怪
-            SpawnMultipleMonsters();
-        }
-        else
-            SpawnOneMonsters();
-
+        public bool monsterWave;           //怪物波次
+        public int npcNum;                 //npc数量
+        public int monsterMin;             //最小数量
+        public int monsterMax;             //最大数量
     }
 
-    //生成多个善良怪
-    public void SpawnMultipleMonsters()
+    [Serializable]
+    public class FirstTrans
     {
-        for (int i = 0; i < RandomMonterNum(); i++)
-        {
-            if (i < goodnessMonsterNum)
-            {
-                GameObject ga = Instantiate(goodnessPrefab, monsterPointList[i].transform);
-            }
-            else
-            {
-                GameObject ga = Instantiate(evilPrefab, monsterPointList[i].transform);
-            }
-        }
+        public List<Transform> transPos;
     }
-
-    //生成最少一个
-    public void SpawnOneMonsters()
-    {
-        for (int i = 0; i < RandomMonterNum(); i++)
-        {
-            if (i == 0)
-            {
-                GameObject ga = Instantiate(goodnessPrefab, monsterPointList[i].transform);
-            }
-            else
-            {
-                GameObject ga = Instantiate(evilPrefab, monsterPointList[i].transform);
-            }
-        }
-
-    }
-
-    //第一次随机生成怪物数量
-    public int RandomMonterNum()
-    {
-        int monterNum = Random.Range(randomMin, randomMax); 
-        return monterNum;
-    }
-
-    //随机善良、邪恶怪物  0为善良
-    public int RandomMonterType()
-    {
-        int monterType = Random.Range(0, 2);
-        if (monterType == 0)
-        {
-            DoubleHitManager.Instance.DebugColorRed("本轮有多个善良的小怪");
-            return 0;
-        }
-        else
-        {
-            DoubleHitManager.Instance.DebugColorRed("本轮至少有一个善良的小怪");
-            return 1;
-        }
-
-    }
-
 }
+
 
 //打乱List顺序
 public static class ListExtensions
@@ -120,5 +114,6 @@ public static class ListExtensions
             list[n] = value;
         }
     }
+
 }
 

@@ -548,6 +548,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 1237283773111477495, guid: b36c1af63f8c15a42aedbe5b969af7f6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1237283773907256974, guid: b36c1af63f8c15a42aedbe5b969af7f6, type: 3}
       propertyPath: NpcB
       value: 
@@ -1296,7 +1300,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &609079146
 Transform:
   m_ObjectHideFlags: 0
@@ -1342,9 +1346,40 @@ MonoBehaviour:
   - {fileID: 1694768915}
   goodnessPrefab: {fileID: 7963914580109914837, guid: 5c88cec017460ba47974d402d56ba678, type: 3}
   evilPrefab: {fileID: 6786254121427176048, guid: 4cb4662d89cded341858314112a074b0, type: 3}
-  randomMin: 4
-  randomMax: 7
-  goodnessMonsterNum: 2
+  monsterWaveList:
+  - monsterWave: 0
+    npcNum: 3
+    monsterMin: 7
+    monsterMax: 11
+  - monsterWave: 0
+    npcNum: 2
+    monsterMin: 5
+    monsterMax: 8
+  - monsterWave: 0
+    npcNum: 1
+    monsterMin: 3
+    monsterMax: 5
+  FirstTransList:
+  - transPos:
+    - {fileID: 1733706969}
+    - {fileID: 1597905194}
+    - {fileID: 1888660968}
+    - {fileID: 556036623}
+  - transPos:
+    - {fileID: 1506558086}
+    - {fileID: 1888660968}
+    - {fileID: 1978544675}
+    - {fileID: 331225752}
+  - transPos:
+    - {fileID: 556036623}
+    - {fileID: 1694768915}
+    - {fileID: 1526303912}
+    - {fileID: 331225752}
+  - transPos:
+    - {fileID: 1888660968}
+    - {fileID: 1978544675}
+    - {fileID: 935068374}
+    - {fileID: 1597905194}
 --- !u!1 &626048386
 GameObject:
   m_ObjectHideFlags: 0
@@ -2153,6 +2188,7 @@ MonoBehaviour:
   spawnArea: 5
   minGenerateTime: 10
   maxGenerateTime: 30
+  monsterAttributes: {fileID: 609079147}
   jsonSecond: 0
   treeSecondC: {fileID: 1566180657}
   isFirst: 0

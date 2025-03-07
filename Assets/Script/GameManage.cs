@@ -38,6 +38,8 @@ public class GameManage : Singleton<GameManage>
     public float maxGenerateTime = 30f;
 
 
+    public MonsterGenerationMags monsterAttributes;
+
     //游戏结束存json，开始需要检测json，判断是否有第二关的按钮
     private void Awake()
     {
@@ -139,6 +141,25 @@ public class GameManage : Singleton<GameManage>
         // 更新UI文本显示当前剩余时间
         timerText.text = FormatTime(currentTime);
 
+        if (currentTime <= 180 && currentTime > 140 && !monsterAttributes.monsterWaveList[2].monsterWave)
+        {
+            monsterAttributes.monsterWaveList[0].monsterWave = false;
+            monsterAttributes.monsterWaveList[1].monsterWave = false;
+            monsterAttributes.monsterWaveList[2].monsterWave = true;
+        }
+        else if (currentTime <= 140 && currentTime > 60 && !monsterAttributes.monsterWaveList[1].monsterWave)
+        {
+            monsterAttributes.monsterWaveList[0].monsterWave = false;
+            monsterAttributes.monsterWaveList[1].monsterWave = true;
+            monsterAttributes.monsterWaveList[2].monsterWave = false;
+        }
+        else if (currentTime <= 60 && !monsterAttributes.monsterWaveList[0].monsterWave)
+        {
+            monsterAttributes.monsterWaveList[0].monsterWave = true;
+            monsterAttributes.monsterWaveList[1].monsterWave = false;
+            monsterAttributes.monsterWaveList[2].monsterWave = false;
+        }
+
         // 当计时结束时的操作
         if (currentTime <= 0)
         {
@@ -146,6 +167,7 @@ public class GameManage : Singleton<GameManage>
             // 在这里可以添加计时结束后的逻辑
             timerText.text = "00:00";
         }
+
     }
 
     // 将时间格式化为mm:ss
