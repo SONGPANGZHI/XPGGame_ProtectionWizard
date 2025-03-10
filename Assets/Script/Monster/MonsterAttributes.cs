@@ -233,7 +233,7 @@ public class MonsterAttributes : MonoBehaviour
         while (elapsedTime < destroyTime)
         {
             particleTrailInstance.transform.position = Vector3.Lerp(particleTrailInstance.transform.position, particePos, Time.deltaTime * 3f);
-            particleTrailInstance.transform.localScale = Vector3.Lerp(particleTrailInstance.transform.localScale, new Vector3(0.5f,0.5f,0.5f), Time.deltaTime * 3f);
+            //particleTrailInstance.transform.localScale = Vector3.Lerp(particleTrailInstance.transform.localScale, new Vector3(0.5f,0.5f,0.5f), Time.deltaTime * 3f);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
