@@ -772,6 +772,8 @@ MonoBehaviour:
   animatorE: {fileID: 8440977438090092881}
   animatorObj: {fileID: 1070761257037543933}
   warningTip: {fileID: 5653911894222497126}
+  particleObj: {fileID: 7099146207540236011, guid: 4034784fd6bde8d41bc37ed796f7606e, type: 3}
+  particePos: {x: 10, y: 6.6, z: 0}
   Goodness2: 1
   Evil2: 0
   Evil3: 0

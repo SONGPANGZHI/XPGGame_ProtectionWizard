@@ -129,10 +129,6 @@ public class PlayerManager : MonoBehaviour
                 {
                     other.transform.parent.GetComponent<MonsterAttributes>().TriggerOnce = true;
                     other.transform.parent.GetComponent<MonsterAttributes>().HitScore();
-                    if (!other.transform.parent.GetComponent<MonsterAttributes>().Goodness2)
-                    {
-                        ScoreManagement.Instance.DeductionScore(20);
-                    }
                     DoubleHitManager.Instance.ClearDoubleHitCount();
                     isProcessing = true;
                 }
@@ -168,26 +164,13 @@ public class PlayerManager : MonoBehaviour
                     }
                     else
                     {
-                        if (other.transform.parent.GetComponent<MonsterAttributes>().Evil2)
-                        {
-                            ScoreManagement.Instance.GetScore(20);
-                        }
-                        else if (other.transform.parent.GetComponent<MonsterAttributes>().Evil3)
+                        if (other.transform.parent.GetComponent<MonsterAttributes>().Evil3)
                         {
                             int a = other.transform.parent.GetComponent<MonsterAttributes>().Evil3Int;
-                            if (a == 1)
+                            if (a == 2)
                             {
-                                ScoreManagement.Instance.GetScore(20);
-                            }
-                            else if (a == 2)
-                            {
-                                ScoreManagement.Instance.DeductionScore(20);
                                 DoubleHitManager.Instance.ClearDoubleHitCount();
                             }
-                        }
-                        else
-                        {
-                            ScoreManagement.Instance.GetScore(10);
                         }
                     }
                     GameManage.Instance.currentCount += 1;

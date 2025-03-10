@@ -40,6 +40,14 @@ public class MonsterAttributes : MonoBehaviour
     [SerializeField]
     private GameObject warningTip;
 
+    [SerializeField]
+    private GameObject particleObj;
+
+    [SerializeField]
+    private Vector3 particePos;
+
+    private GameObject particleTrailInstance;
+
     public bool Goodness2;//是否是第二关npc
 
     public bool Evil2;//是否是第二关其他分值小怪   20
@@ -158,7 +166,8 @@ public class MonsterAttributes : MonoBehaviour
                 }
                 else
                 {
-                    ShowFloatingText(this.transform.position, "-20");
+                    ShowFloatingText(this.transform.position, string.Format("<color=#FF3434>{0}</color>", "-20"));
+                    ScoreManagement.Instance.DeductionScore(20);
                 }
                 break;
             case MonterType.Evil:
@@ -168,36 +177,69 @@ public class MonsterAttributes : MonoBehaviour
                 {
                     if (Evil2)
                     {
-                        ShowFloatingText(this.transform.position, "20");
-                    }else if (Evil3)
+                        ShowFloatingText(this.transform.position, "+20");
+                        StartCoroutine(PlayTrailParticle(20));
+                    }
+                    else if (Evil3)
                     {
                         
                         if (Evil3Int == 1)
                         {
 
-                            ShowFloatingText(this.transform.position, "20");
+                            ShowFloatingText(this.transform.position, "+20");
+                            StartCoroutine(PlayTrailParticle(20));
                         }
                         else if (Evil3Int == 2)
                         {
-                            ShowFloatingText(this.transform.position, "-20");
+                            ShowFloatingText(this.transform.position, string.Format("<color=#FF3434>{0}</color>", "-20"));
+                            ScoreManagement.Instance.DeductionScore(20);
                         }
                     }
                     else
                     {
-                        ShowFloatingText(this.transform.position, "10");
+                        ShowFloatingText(this.transform.position, "+10");
+                        StartCoroutine(PlayTrailParticle(10));
+                        
                     }
-
                 }
                 else
                 {
                     ShowFloatingText(this.transform.position, DoubleHitManager.Instance.doubleHitScore.ToString());
+                    StartCoroutine(PlayTrailParticle((int)DoubleHitManager.Instance.doubleHitScore));
                 }
-                    
                 break;
         }
     }
 
-    //特效
+    //延迟一秒加分播放特效
+
+    
+
+    IEnumerator PlayTrailParticle(int _score)
+    {
+        StartCoroutine(InitParticleTrail());
+        yield return new WaitForSeconds(1f);
+        ScoreManagement.Instance.GetScore(_score);
+
+    }
+
+    public IEnumerator InitParticleTrail()
+    {
+        particleTrailInstance = Instantiate(particleObj, this.transform);
+
+        float destroyTime = 1f; // 文字存在的时间
+        float elapsedTime = 0f;
+
+        while (elapsedTime < destroyTime)
+        {
+            particleTrailInstance.transform.position = Vector3.Lerp(particleTrailInstance.transform.position, particePos, Time.deltaTime * 3f);
+            particleTrailInstance.transform.localScale = Vector3.Lerp(particleTrailInstance.transform.localScale, new Vector3(0.5f,0.5f,0.5f), Time.deltaTime * 3f);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        Destroy(particleTrailInstance);
+    }
 
     //字体界面
     public void TextPlane()
@@ -227,11 +269,13 @@ public class MonsterAttributes : MonoBehaviour
     {
         float destroyTime = 1f; // 文字存在的时间
         Vector3 targetPosition = textGO.transform.position + new Vector3(0, 2f, 0); // 向上移动的距离
+        Vector3 targetScale = new Vector3(1.5f,1.5f,1.5f);
         float elapsedTime = 0f;
 
         while (elapsedTime < destroyTime)
         {
             textGO.transform.position = Vector3.Lerp(textGO.transform.position, targetPosition, Time.deltaTime * 2);
+            textGO.transform.GetChild(0).localScale = Vector3.Lerp(textGO.transform.GetChild(0).localScale, targetScale, Time.deltaTime * 2);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
