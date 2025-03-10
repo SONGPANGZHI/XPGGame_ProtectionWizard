@@ -45,8 +45,8 @@ public class DoubleHitManager : MonoBehaviour
 
         if (!timewait)
         {
-            doubleHit_UI.SetActive(true);
-            Invoke("DelayTime", 0.3f);
+            
+            Invoke("DelayTime", 0.5f);
 
             RewardT = 10f;
             sl.fillAmount = 1;
@@ -59,6 +59,7 @@ public class DoubleHitManager : MonoBehaviour
 
     public void DelayTime()
     {
+        doubleHit_UI.SetActive(true);
         doubleHit_FVX.SetActive(true);
     }
     //连击计时器 暂定10s

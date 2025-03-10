@@ -104,6 +104,7 @@ public class PlayerManager : MonoBehaviour
         {
             attackCube.SetActive(true);
             canMove = false;
+            rb.velocity = Vector3.zero;
             canAttack = false;
             SoundManagement.Instance.PlaySFX(0);
             deactivateTriggerTime = Time.time + attackTime;

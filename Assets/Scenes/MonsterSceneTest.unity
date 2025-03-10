@@ -4238,10 +4238,10 @@ MonoBehaviour:
   evilPrefab1: {fileID: 6786254121427176048, guid: 6edda05fda3105d4b800f07a30ed548f, type: 3}
   evilPrefab2: {fileID: 7963914580109914837, guid: 15db2fae887c596409840ccdbaed66cb, type: 3}
   evilPrefab3: {fileID: 6786254121427176048, guid: 92887447768f1dd428dacf8dc15e050c, type: 3}
-  randomMin: 5
-  randomMax: 8
-  goodnessMonsterNum: 2
   score: 0
+  scorePhaseOne: 100
+  scorePhaseTwo: 200
+  scorePhaseTree: 300
 --- !u!1 &1786933214
 GameObject:
   m_ObjectHideFlags: 0
