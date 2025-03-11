@@ -571,10 +571,7 @@ MonoBehaviour:
   incentiveSS:
   - index: 0
     content: "\u8BC6\u522B\u6210\u529F\uFF01\u5E72\u5F97\u6F02\u4EAE\uFF01"
-    contentAudio: {fileID: 0}
   I_content: 
-  Speak: {fileID: 0}
-  I_contentAudio: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
