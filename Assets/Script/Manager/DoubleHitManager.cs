@@ -41,7 +41,7 @@ public class DoubleHitManager : MonoBehaviour
         {
             doubleHitScore = a * times_8;
         }
-        ScoreManagement.Instance.GetScore((int)doubleHitScore);
+        //ScoreManagement.Instance.GetScore((int)doubleHitScore);
 
         if (!timewait)
         {

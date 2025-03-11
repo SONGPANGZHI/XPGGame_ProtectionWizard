@@ -27,9 +27,12 @@ public class IncentiveSystemUI : Singleton<IncentiveSystemUI>
         }
         MonitorOther();
     }
-    public bool hitOne = false;
-    public bool hitTwo = false;
-    public bool hitThree = false;
+    private bool hitOne = false;
+    private bool hitTwo = false;
+    private bool hitThree = false;
+    private bool scoreOne = false;
+    private bool scoreTwo = false;
+    private bool scoreThree = false;
     public void MonitorOther()
     {
         if (DoubleHitManager.Instance.doubleHitCount == 0)
@@ -55,6 +58,22 @@ public class IncentiveSystemUI : Singleton<IncentiveSystemUI>
         {
             Export_EncouragingContentEn(4);
             hitThree = false;
+        }
+
+        if (ScoreManagement.Instance.TotalScore==0)
+        {
+            scoreOne = true;
+            scoreTwo = true;
+        }
+        if (ScoreManagement.Instance.TotalScore >=100 && scoreOne)
+        {
+            Export_EncouragingContentEn(7);
+            scoreOne = false;
+        }
+        else if (ScoreManagement.Instance.TotalScore >= 200 && scoreTwo)
+        {
+            Export_EncouragingContentEn(8);
+            scoreTwo = false;
         }
     }
     public void Set_enableTime()
