@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 #if UNITY_EDITOR
@@ -28,7 +28,7 @@ public class CameraPositionRecorderEasy : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            //DontDestroyOnLoad(gameObject); // Èç¹ûĞèÒªÔÚ³¡¾°ÇĞ»»ÖĞ±£³ÖÕâ¸ö¶ÔÏóµÄ»°
+            //DontDestroyOnLoad(gameObject); // å¦‚æœéœ€è¦åœ¨åœºæ™¯åˆ‡æ¢ä¸­ä¿æŒè¿™ä¸ªå¯¹è±¡çš„è¯
         }
         else
         {
@@ -36,17 +36,17 @@ public class CameraPositionRecorderEasy : MonoBehaviour
         }
     }
 
-    // ¼ÇÂ¼µ±Ç°SceneÊÓÍ¼ÖĞÉãÏñ»úµÄÎ»ÖÃºÍĞı×ª
+    // è®°å½•å½“å‰Sceneè§†å›¾ä¸­æ‘„åƒæœºçš„ä½ç½®å’Œæ—‹è½¬
     public void RecordCurrentSceneCameraPosition()
     {
 #if UNITY_EDITOR
         var sceneCam = SceneView.lastActiveSceneView.camera.transform;
         recordedPositions.Add(new TransformData(sceneCam));
-        Debug.Log("¼ÇÂ¼ÁËµ±Ç°Î»ÖÃ: " + sceneCam.position + " Ğı×ª: " + sceneCam.rotation.eulerAngles);
+        Debug.Log("è®°å½•äº†å½“å‰ä½ç½®: " + sceneCam.position + " æ—‹è½¬: " + sceneCam.rotation.eulerAngles);
 #endif
     }
 
-    // ½«Ö÷ÉãÏñ»úµÄÎ»ÖÃºÍĞı×ªÉèÖÃÎªÁĞ±íÖĞµÄÖ¸¶¨Î»ÖÃ
+    // å°†ä¸»æ‘„åƒæœºçš„ä½ç½®å’Œæ—‹è½¬è®¾ç½®ä¸ºåˆ—è¡¨ä¸­çš„æŒ‡å®šä½ç½®
     public void MoveMainCameraToRecordedPosition(int index)
     {
         if (index >= 0 && index < recordedPositions.Count)
@@ -55,15 +55,15 @@ public class CameraPositionRecorderEasy : MonoBehaviour
             Camera.main.gameObject.GetComponent<CameraShake>().initialPosition= targetTransform.position;
             Camera.main.transform.position = targetTransform.position;
             Camera.main.transform.rotation = targetTransform.rotation;
-            Debug.Log("ÒÆ¶¯µ½¼ÇÂ¼Î»ÖÃ: " + targetTransform.position + " Ğı×ª: " + targetTransform.rotation.eulerAngles);
+            Debug.Log("ç§»åŠ¨åˆ°è®°å½•ä½ç½®: " + targetTransform.position + " æ—‹è½¬: " + targetTransform.rotation.eulerAngles);
         }
         else
         {
-            Debug.LogWarning("ÎŞĞ§µÄË÷Òı");
+            Debug.LogWarning("æ— æ•ˆçš„ç´¢å¼•");
         }
     }
 }
-// ×Ô¶¨ÒåInspector½çÃæ
+// è‡ªå®šä¹‰Inspectorç•Œé¢
 #if UNITY_EDITOR
 [CustomEditor(typeof(CameraPositionRecorderEasy))]
 public class CameraPositionRecorderEditor : Editor
@@ -74,7 +74,7 @@ public class CameraPositionRecorderEditor : Editor
 
         CameraPositionRecorderEasy recorder = (CameraPositionRecorderEasy)target;
 
-        if (GUILayout.Button("¼ÇÂ¼µ±Ç°Î»ÖÃ"))
+        if (GUILayout.Button("è®°å½•å½“å‰ä½ç½®"))
         {
             recorder.RecordCurrentSceneCameraPosition();
         }

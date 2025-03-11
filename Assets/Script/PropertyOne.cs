@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,18 +15,18 @@ public class PropertyOne : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Èç¹ûÅö×²µÄ¶ÔÏó±êÇ©ÊÇ"Sphere"£¨Äã¿ÉÒÔ¸ù¾İÊµ¼ÊÇé¿ö¸ü¸Ä£©
+        // å¦‚æœç¢°æ’çš„å¯¹è±¡æ ‡ç­¾æ˜¯"Sphere"ï¼ˆä½ å¯ä»¥æ ¹æ®å®é™…æƒ…å†µæ›´æ”¹ï¼‰
         if (other.gameObject.CompareTag("Player"))
         {
             countdownTimer = other.gameObject.GetComponent<PlayerManager>();
-            // Ôö¼Ó¼ÆÊ±Æ÷ÉÏµÄÊ±¼ä
+            // å¢åŠ è®¡æ—¶å™¨ä¸Šçš„æ—¶é—´
             if (canAddTime)
             {
-                countdownTimer.AddTime(AddTimeCount);//¼ÓÊ±
+                countdownTimer.AddTime(AddTimeCount);//åŠ æ—¶
             }
             else
             {
-                countdownTimer.AddTime(-AddTimeCount);//¼õÊ±
+                countdownTimer.AddTime(-AddTimeCount);//å‡æ—¶
             }
             
             //gameObject.SetActive(false);

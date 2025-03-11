@@ -1,17 +1,17 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MonsterAttributes : MonoBehaviour
 {
-    //¹ÖÎïÀà±ğ
+    //æ€ªç‰©ç±»åˆ«
     public enum MonterType
     {
         Goodness,
         Evil
     }
 
-    //¶¯»­×´Ì¬
+    //åŠ¨ç”»çŠ¶æ€
     public enum MonterAnimType
     {
         Standby,
@@ -20,16 +20,16 @@ public class MonsterAttributes : MonoBehaviour
     }
 
     [SerializeField]
-    private MonterType monterType;              //¹ÖÎïÀà±ğ
+    private MonterType monterType;              //æ€ªç‰©ç±»åˆ«
     private MonterAnimType monterAnimType;
     private bool isDie=false;
     public GameObject monterPrefab;
         
     [SerializeField]
-    private Text scoreText;                     //µÃ·ÖÎÄ±¾
+    private Text scoreText;                     //å¾—åˆ†æ–‡æœ¬
 
     [SerializeField]
-    private GameObject dieEffects;              //ËÀÍöÌØĞ§
+    private GameObject dieEffects;              //æ­»äº¡ç‰¹æ•ˆ
 
     [SerializeField]
     private Animator animatorE;
@@ -48,11 +48,11 @@ public class MonsterAttributes : MonoBehaviour
 
     private GameObject particleTrailInstance;
 
-    public bool Goodness2;//ÊÇ·ñÊÇµÚ¶ş¹Ønpc
+    public bool Goodness2;//æ˜¯å¦æ˜¯ç¬¬äºŒå…³npc
 
-    public bool Evil2;//ÊÇ·ñÊÇµÚ¶ş¹ØÆäËû·ÖÖµĞ¡¹Ö   20
+    public bool Evil2;//æ˜¯å¦æ˜¯ç¬¬äºŒå…³å…¶ä»–åˆ†å€¼å°æ€ª   20
 
-    public bool Evil3;//ÊÇ·ñÊÇµÚ¶ş¹ØÆäËû·ÖÖµĞ¡¹Ö   30
+    public bool Evil3;//æ˜¯å¦æ˜¯ç¬¬äºŒå…³å…¶ä»–åˆ†å€¼å°æ€ª   30
 
     public int Evil3Int=0;
 
@@ -70,7 +70,7 @@ public class MonsterAttributes : MonoBehaviour
         MonsterState();
     }
 
-    //ÏÈ³öÔ¤¾¯ÌáÊ¾
+    //å…ˆå‡ºé¢„è­¦æç¤º
     public void WarningTipShow()
     {
         warningTip.SetActive(true);
@@ -78,14 +78,14 @@ public class MonsterAttributes : MonoBehaviour
         Invoke("WarningTipEnd", 2f);
     }
 
-    //1.5sºó Ô¤¾¯½áÊø¿ªÊ¼Éú³É¹Ö
+    //1.5så é¢„è­¦ç»“æŸå¼€å§‹ç”Ÿæˆæ€ª
     public void WarningTipEnd()
     {
         Invoke("PlayDiappear", TimeToLive());
     }
 
 
-    //´æ»îÊ±¼äs
+    //å­˜æ´»æ—¶é—´s
     public int TimeToLive()
     {
         warningTip.SetActive(false);
@@ -94,7 +94,7 @@ public class MonsterAttributes : MonoBehaviour
         return liveTime;
     }
 
-    //Ïú»Ù
+    //é”€æ¯
     public void DestroyMonter()
     {
         if (!isDie)
@@ -104,7 +104,7 @@ public class MonsterAttributes : MonoBehaviour
 
     }
 
-    //²¥·ÅÏûÊ§¶¯»­
+    //æ’­æ”¾æ¶ˆå¤±åŠ¨ç”»
     public void PlayDiappear()
     {
         if (!dieAnim)
@@ -137,15 +137,15 @@ public class MonsterAttributes : MonoBehaviour
         animatorObj.Play("Die");
     }
 
-    //¶¯»­²¥·Å
-    //3dµÃ·ÖUI
-    //»÷´òµÃ·Ö¡¢¿Û·Ö
+    //åŠ¨ç”»æ’­æ”¾
+    //3då¾—åˆ†UI
+    //å‡»æ‰“å¾—åˆ†ã€æ‰£åˆ†
     public void HitScore()
     {
         monterAnimType = MonterAnimType.Die;
         dieAnim = true;
-        Invoke("SetColli", 1.5f);//Ê±¼ä¿ÉÒÔÑÓ³¤µã
-        Invoke("DelayDestroyMonter",2f);//Ê±¼ä¿ÉÒÔÑÓ³¤µã
+        Invoke("SetColli", 1.5f);//æ—¶é—´å¯ä»¥å»¶é•¿ç‚¹
+        Invoke("DelayDestroyMonter",2f);//æ—¶é—´å¯ä»¥å»¶é•¿ç‚¹
         Invoke("PlayAnimatorDie", 0.5f);
     }
 
@@ -157,7 +157,7 @@ public class MonsterAttributes : MonoBehaviour
         switch (monterType)
         {
             case MonterType.Goodness:
-                //Debug.Log("¼õ20·Ö");
+                //Debug.Log("å‡20åˆ†");
                 SoundManagement.Instance.PlaySFX(2);
                 if (Goodness2)
                 {
@@ -171,7 +171,7 @@ public class MonsterAttributes : MonoBehaviour
                 }
                 break;
             case MonterType.Evil:
-                //Debug.Log("¼Ó10·Ö");
+                //Debug.Log("åŠ 10åˆ†");
                 SoundManagement.Instance.PlaySFX(1);
                 if (DoubleHitManager.Instance.doubleHitScore == 0)
                 {
@@ -211,7 +211,7 @@ public class MonsterAttributes : MonoBehaviour
         }
     }
 
-    //ÑÓ³ÙÒ»Ãë¼Ó·Ö²¥·ÅÌØĞ§
+    //å»¶è¿Ÿä¸€ç§’åŠ åˆ†æ’­æ”¾ç‰¹æ•ˆ
 
     
 
@@ -227,7 +227,7 @@ public class MonsterAttributes : MonoBehaviour
     {
         particleTrailInstance = Instantiate(particleObj, this.transform);
 
-        float destroyTime = 1f; // ÎÄ×Ö´æÔÚµÄÊ±¼ä
+        float destroyTime = 1f; // æ–‡å­—å­˜åœ¨çš„æ—¶é—´
         float elapsedTime = 0f;
 
         while (elapsedTime < destroyTime)
@@ -241,20 +241,20 @@ public class MonsterAttributes : MonoBehaviour
         Destroy(particleTrailInstance);
     }
 
-    //×ÖÌå½çÃæ
+    //å­—ä½“ç•Œé¢
     public void TextPlane()
     { 
     
     }
 
 
-    //¼Ó·Ö¿Û·ÖĞü¸¡×ÖÌå
+    //åŠ åˆ†æ‰£åˆ†æ‚¬æµ®å­—ä½“
     public GameObject textPrefab; // Assign your Text prefab here in the inspector
     private GameObject floatingTextInstance;
 
     public void ShowFloatingText(Vector3 worldPosition, string text)
     {
-        // ÊµÀı»¯Text Prefab
+        // å®ä¾‹åŒ–Text Prefab
         floatingTextInstance = Instantiate(textPrefab, worldPosition + new Vector3(0, 1f, 0), Quaternion.identity,this.gameObject.transform);
         //floatingTextInstance = Instantiate(textPrefab, this.gameObject.transform);
         Text textComponent = floatingTextInstance.GetComponentInChildren<Text>();
@@ -267,8 +267,8 @@ public class MonsterAttributes : MonoBehaviour
 
     private IEnumerator MoveAndDestroy(GameObject textGO)
     {
-        float destroyTime = 1f; // ÎÄ×Ö´æÔÚµÄÊ±¼ä
-        Vector3 targetPosition = textGO.transform.position + new Vector3(0, 2f, 0); // ÏòÉÏÒÆ¶¯µÄ¾àÀë
+        float destroyTime = 1f; // æ–‡å­—å­˜åœ¨çš„æ—¶é—´
+        Vector3 targetPosition = textGO.transform.position + new Vector3(0, 2f, 0); // å‘ä¸Šç§»åŠ¨çš„è·ç¦»
         Vector3 targetScale = new Vector3(1.5f,1.5f,1.5f);
         float elapsedTime = 0f;
 

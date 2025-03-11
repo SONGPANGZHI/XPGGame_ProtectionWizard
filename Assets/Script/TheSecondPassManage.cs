@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,45 +17,45 @@ public class TheSecondPassManage : MonoBehaviour
         
     }
 
-    public void UnlockTheSecondPass()//½âËøµÚ¶þ¹Ø¶È
+    public void UnlockTheSecondPass()//è§£é”ç¬¬äºŒå…³åº¦
     {
         UnlockInitialize();
-        //ÔÚ±¾µØ»òÊÇÆäËûµØ·½¼ÇÂ¼£¨JSON£©,·½±ã¿ªÊ¼Ê±ÅÐ¶ÏÊÇ·ñÒÑ¾­½âËøµÚ¶þ¹Ø
+        //åœ¨æœ¬åœ°æˆ–æ˜¯å…¶ä»–åœ°æ–¹è®°å½•ï¼ˆJSONï¼‰,æ–¹ä¾¿å¼€å§‹æ—¶åˆ¤æ–­æ˜¯å¦å·²ç»è§£é”ç¬¬äºŒå…³
     }
 
-    public void UnlockInitialize()//µÚ¶þ¹Ø³õÊ¼»¯
+    public void UnlockInitialize()//ç¬¬äºŒå…³åˆå§‹åŒ–
     {
 
     }
 
-    //public void SetDifficultyToScore()//Ëæ»ý·Ö½âËø¸ü¸ßÄÑ¶È
+    //public void SetDifficultyToScore()//éšç§¯åˆ†è§£é”æ›´é«˜éš¾åº¦
     //{
     //    if (playerManager.TotalScore>=0&& playerManager.TotalScore<100)
     //    {
     //        //if (one) return;
-    //        //µ¥Èý½Ç
+    //        //å•ä¸‰è§’
     //        //one=true;
     //    }
     //    else if (playerManager.TotalScore >= 100 && playerManager.TotalScore < 200)
     //    {
     //        //if (two) return;
-    //        //Õý·½
+    //        //æ­£æ–¹
     //        //two=true;
     //    }
     //    else if (playerManager.TotalScore >= 200 && playerManager.TotalScore < 300)
     //    {
     //        //if (three) return;
-    //        //Èý½Ç+Õý·½
+    //        //ä¸‰è§’+æ­£æ–¹
     //        //three=true;
     //    }
     //    else if (playerManager.TotalScore >= 300 && playerManager.TotalScore < 400)
     //    {
     //        //if (four) return;
-    //        //Èý½Ç+Õý·½+Ô²
+    //        //ä¸‰è§’+æ­£æ–¹+åœ†
     //        //four=true;
     //    }
     //}
-    public void SetDefault()//ÖØÖÃ
+    public void SetDefault()//é‡ç½®
     {
         //One=false;
         //two=false;

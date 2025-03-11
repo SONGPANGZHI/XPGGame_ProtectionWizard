@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
@@ -18,7 +18,7 @@ public class MonsterGenerationMags : MonoBehaviour
 
     public List<FirstTrans> FirstTransList;
 
-    //¹ÖÎï¡¢npcÉú³É
+    //æ€ªç‰©ã€npcç”Ÿæˆ
     public void CreateMonsterWave(int ID)
     {
         int monsterTotal = UnityEngine.Random.Range(monsterWaveList[ID].monsterMin, monsterWaveList[ID].monsterMax);
@@ -38,7 +38,7 @@ public class MonsterGenerationMags : MonoBehaviour
 
     }
 
-    //Éú³ÉµÚÒ»²¨´ÎµÄ¹Ö
+    //ç”Ÿæˆç¬¬ä¸€æ³¢æ¬¡çš„æ€ª
     public void FirstMonster(int ID)
     {
         int monsterTotal = UnityEngine.Random.Range(monsterWaveList[ID].monsterMin, monsterWaveList[ID].monsterMax);
@@ -85,10 +85,10 @@ public class MonsterGenerationMags : MonoBehaviour
     [Serializable]
     public class FirstLevelMonsterWave
     {
-        public bool monsterWave;           //¹ÖÎï²¨´Î
-        public int npcNum;                 //npcÊıÁ¿
-        public int monsterMin;             //×îĞ¡ÊıÁ¿
-        public int monsterMax;             //×î´óÊıÁ¿
+        public bool monsterWave;           //æ€ªç‰©æ³¢æ¬¡
+        public int npcNum;                 //npcæ•°é‡
+        public int monsterMin;             //æœ€å°æ•°é‡
+        public int monsterMax;             //æœ€å¤§æ•°é‡
     }
 
     [Serializable]
@@ -99,7 +99,7 @@ public class MonsterGenerationMags : MonoBehaviour
 }
 
 
-//´òÂÒListË³Ğò
+//æ‰“ä¹±Listé¡ºåº
 public static class ListExtensions
 {
     public static void Shuffle<T>(this List<T> list)

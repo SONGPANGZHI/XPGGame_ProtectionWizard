@@ -1,4 +1,4 @@
-using NodeCanvas.DialogueTrees;
+ï»¿using NodeCanvas.DialogueTrees;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -22,28 +22,28 @@ public class GameManage : Singleton<GameManage>
     public GameObject enemy;
     public GameObject enemySecond;
     public PlayerManager playerManager;
-    public int getTotalScore;//µÃ·Ö½çÃæÏÔÊ¾µÄµÃ·Ö
+    public int getTotalScore;//å¾—åˆ†ç•Œé¢æ˜¾ç¤ºçš„å¾—åˆ†
 
-    // ÒıÓÃÄãµÄcubeÔ¤ÖÆÌå
+    // å¼•ç”¨ä½ çš„cubeé¢„åˆ¶ä½“
     public GameObject[] cubePrefabs;
 
-    // Éú³ÉÇøÓòµÄ´óĞ¡
+    // ç”ŸæˆåŒºåŸŸçš„å¤§å°
     public float spawnArea = 5f;
 
-    // ¿ªÊ¼Ëæ»úÉú³ÉĞ­³ÌµÄ±êÖ¾
+    // å¼€å§‹éšæœºç”Ÿæˆåç¨‹çš„æ ‡å¿—
     private bool shouldSpawn = false;
 
-    //Éú³É¼ä¸ôÊ±¼ä·¶Î§
+    //ç”Ÿæˆé—´éš”æ—¶é—´èŒƒå›´
     public float minGenerateTime = 10f;
     public float maxGenerateTime = 30f;
 
 
     public MonsterGenerationMags monsterAttributes;
 
-    //ÓÎÏ·½áÊø´æjson£¬¿ªÊ¼ĞèÒª¼ì²âjson£¬ÅĞ¶ÏÊÇ·ñÓĞµÚ¶ş¹ØµÄ°´Å¥
+    //æ¸¸æˆç»“æŸå­˜jsonï¼Œå¼€å§‹éœ€è¦æ£€æµ‹jsonï¼Œåˆ¤æ–­æ˜¯å¦æœ‰ç¬¬äºŒå…³çš„æŒ‰é’®
     private void Awake()
     {
-        // ÉèÖÃjsonÎÄ¼şÂ·¾¶
+        // è®¾ç½®jsonæ–‡ä»¶è·¯å¾„
         jsonFilePath = Path.Combine(Application.dataPath, "Resources/data.json");
         if (!File.Exists(jsonFilePath))
         {
@@ -66,7 +66,7 @@ public class GameManage : Singleton<GameManage>
     }
 
     public bool jsonSecond = false;
-    private bool whetherUnlock=false;//µÚ¶ş¹Ø½âËø±êÖ¾
+    private bool whetherUnlock=false;//ç¬¬äºŒå…³è§£é”æ ‡å¿—
     [SerializeField] 
     DialogueTreeController treeSecondC;
 
@@ -75,7 +75,7 @@ public class GameManage : Singleton<GameManage>
 
     void Update()
     {
-        //ÓÎÏ·¿ªÊ¼
+        //æ¸¸æˆå¼€å§‹
         if (gameStateType== GameStateType.TheFirstPass|| gameStateType == GameStateType.TheSecondPass)
         {
             KeepTime();
@@ -87,16 +87,16 @@ public class GameManage : Singleton<GameManage>
         {
             whetherUnlock = true;
             jsonSecond = true;
-            //ÓÃµÚ¶şÌ×¹ÖÎïÉú³É£¨¶àÖÖ¹Ö£¬¸ù¾İ»ı·Ö£©
-            Debug.Log("µÚ¶ş¹Ø½âËøÁË£¡£¡£¡");
+            //ç”¨ç¬¬äºŒå¥—æ€ªç‰©ç”Ÿæˆï¼ˆå¤šç§æ€ªï¼Œæ ¹æ®ç§¯åˆ†ï¼‰
+            Debug.Log("ç¬¬äºŒå…³è§£é”äº†ï¼ï¼ï¼");
         }else if (ScoreManagement.Instance.TotalScore >= 0 && ScoreManagement.Instance.TotalScore <= 1000)
         {
             whetherUnlock = false;
         }
 
 
-        //µÚÒ»¹Ø½áÊø
-        if (gameStateType == GameStateType.TheFirstPass && currentTime==0 && whetherUnlock==false)//µÚÒ»¹Ø½áÊø·ÖÖµ²»¹»£¬Ö±½Ó½áÊø
+        //ç¬¬ä¸€å…³ç»“æŸ
+        if (gameStateType == GameStateType.TheFirstPass && currentTime==0 && whetherUnlock==false)//ç¬¬ä¸€å…³ç»“æŸåˆ†å€¼ä¸å¤Ÿï¼Œç›´æ¥ç»“æŸ
         {
             getTotalScore = ScoreManagement.Instance.TotalScore;
             gameStateType = GameStateType.GameEnd;
@@ -104,21 +104,21 @@ public class GameManage : Singleton<GameManage>
             InterfaceManagement.Instance.OpenGameOverPlane();
 
         }
-        if (gameStateType == GameStateType.TheFirstPass && currentTime == 0 && whetherUnlock == true)//µÚÒ»¹Ø½áÊø·ÖÖµ¹»ÁË£¬½øÈëµÚ¶ş¹Ø
+        if (gameStateType == GameStateType.TheFirstPass && currentTime == 0 && whetherUnlock == true)//ç¬¬ä¸€å…³ç»“æŸåˆ†å€¼å¤Ÿäº†ï¼Œè¿›å…¥ç¬¬äºŒå…³
         {
             PlayS();
         }
-        //»¹ĞèÒªÒ»¸öÖ±½Ó½øÈëµÄ·½·¨
+        //è¿˜éœ€è¦ä¸€ä¸ªç›´æ¥è¿›å…¥çš„æ–¹æ³•
 
-        //µÚ¶ş¹Ø½áÊø
-        if (gameStateType == GameStateType.TheSecondPass&& currentTime==0)//³õÊ¼»¯»ñÈ¡jsonÊı¾İÅĞ¶Ï
+        //ç¬¬äºŒå…³ç»“æŸ
+        if (gameStateType == GameStateType.TheSecondPass&& currentTime==0)//åˆå§‹åŒ–è·å–jsonæ•°æ®åˆ¤æ–­
         {
             getTotalScore = ScoreManagement.Instance.TotalScore;
             gameStateType = GameStateType.GameEnd;
             GameStateSet();
             InterfaceManagement.Instance.OpenGameOverPlane();
         }
-        //npcËÀÍöÓÎÏ·½áÊø
+        //npcæ­»äº¡æ¸¸æˆç»“æŸ
         if (gameStateType == GameStateType.TheSecondPass && secondNpcHp <= 0)
         {
             getTotalScore = ScoreManagement.Instance.TotalScore;
@@ -129,16 +129,16 @@ public class GameManage : Singleton<GameManage>
 
     }
 
-    #region ¼ÆÊ±
-    public TMP_Text timerText; // ÒıÓÃµ½ÄãµÄText UI×é¼ş
-    public float currentTime = 180f; // 3·ÖÖÓµÄ¼ÆÊ±
-    //¼ÆÊ±
+    #region è®¡æ—¶
+    public TMP_Text timerText; // å¼•ç”¨åˆ°ä½ çš„Text UIç»„ä»¶
+    public float currentTime = 180f; // 3åˆ†é’Ÿçš„è®¡æ—¶
+    //è®¡æ—¶
     public void KeepTime()
     {
-        // Ã¿Ö¡¼õÉÙÊ±¼ä
+        // æ¯å¸§å‡å°‘æ—¶é—´
         currentTime -= Time.deltaTime;
 
-        // ¸üĞÂUIÎÄ±¾ÏÔÊ¾µ±Ç°Ê£ÓàÊ±¼ä
+        // æ›´æ–°UIæ–‡æœ¬æ˜¾ç¤ºå½“å‰å‰©ä½™æ—¶é—´
         timerText.text = FormatTime(currentTime);
 
         if (currentTime <= 180 && currentTime > 140 && !monsterAttributes.monsterWaveList[2].monsterWave)
@@ -160,17 +160,17 @@ public class GameManage : Singleton<GameManage>
             monsterAttributes.monsterWaveList[2].monsterWave = false;
         }
 
-        // µ±¼ÆÊ±½áÊøÊ±µÄ²Ù×÷
+        // å½“è®¡æ—¶ç»“æŸæ—¶çš„æ“ä½œ
         if (currentTime <= 0)
         {
             currentTime = 0;
-            // ÔÚÕâÀï¿ÉÒÔÌí¼Ó¼ÆÊ±½áÊøºóµÄÂß¼­
+            // åœ¨è¿™é‡Œå¯ä»¥æ·»åŠ è®¡æ—¶ç»“æŸåçš„é€»è¾‘
             timerText.text = "00:00";
         }
 
     }
 
-    // ½«Ê±¼ä¸ñÊ½»¯Îªmm:ss
+    // å°†æ—¶é—´æ ¼å¼åŒ–ä¸ºmm:ss
     private string FormatTime(float timeInSeconds)
     {
         int minutes = Mathf.FloorToInt(timeInSeconds / 60);
@@ -179,22 +179,22 @@ public class GameManage : Singleton<GameManage>
     }
     #endregion
 
-    //¼Ó¼õÊ±¼ä½»»¥
+    //åŠ å‡æ—¶é—´äº¤äº’
     public void AddT(float additionalTime)
     {
         currentTime += additionalTime;
     }
 
-    #region ¼Æ·Ö¼ÆÊı
+    #region è®¡åˆ†è®¡æ•°
     public TMP_Text ScoerText;
-    //´ò¹Ö¼ÆÊı
-    // ÒıÓÃµ½ÄãµÄText UIÔªËØ
+    //æ‰“æ€ªè®¡æ•°
+    // å¼•ç”¨åˆ°ä½ çš„Text UIå…ƒç´ 
     public TMP_Text counterText;
-    // ×ÜÊı
+    // æ€»æ•°
     private int totalCount = 50;
-    // µ±Ç°¼ÆÊı
+    // å½“å‰è®¡æ•°
     public int currentCount = 0;
-    //µÃ·Ö¼ÆËã
+    //å¾—åˆ†è®¡ç®—
     public void Score()
     {
         if (ScoreManagement.Instance.TotalScore <= 0)
@@ -205,8 +205,8 @@ public class GameManage : Singleton<GameManage>
         ScoerText.text = ScoreManagement.Instance.TotalScore.ToString();
     }
 
-    //¼ÆÊı
-    // ¸üĞÂTextÄÚÈİµÄ·½·¨
+    //è®¡æ•°
+    // æ›´æ–°Textå†…å®¹çš„æ–¹æ³•
     private void UpdateCounterText()
     {
         if (currentCount >= totalCount)
@@ -218,10 +218,10 @@ public class GameManage : Singleton<GameManage>
     #endregion
 
 
-    #region µÀ¾ßÔÚ5x5·¶Î§ÄÚËæ»úÉú³É
+    #region é“å…·åœ¨5x5èŒƒå›´å†…éšæœºç”Ÿæˆ
     public GameObject parentT;
-    //µÀ¾ßÉú³É
-    // µ÷ÓÃ´Ë·½·¨ÒÔ¿ªÊ¼/Í£Ö¹Éú³É
+    //é“å…·ç”Ÿæˆ
+    // è°ƒç”¨æ­¤æ–¹æ³•ä»¥å¼€å§‹/åœæ­¢ç”Ÿæˆ
     public void ToggleSpawn(bool spawn)
     {
         shouldSpawn = spawn;
@@ -240,18 +240,18 @@ public class GameManage : Singleton<GameManage>
     {
         while (shouldSpawn)
         {
-            // Ëæ»úÑ¡ÔñÒ»¸öÔ¤ÖÆÌå
+            // éšæœºé€‰æ‹©ä¸€ä¸ªé¢„åˆ¶ä½“
             GameObject prefabToSpawn = cubePrefabs[Random.Range(0, cubePrefabs.Length)];
 
-            // ÔÚ-2.5µ½2.5Ö®¼äÉú³ÉÒ»¸öËæ»úÎ»ÖÃ£¬ÒòÎªspawnAreaÊÇ5
+            // åœ¨-2.5åˆ°2.5ä¹‹é—´ç”Ÿæˆä¸€ä¸ªéšæœºä½ç½®ï¼Œå› ä¸ºspawnAreaæ˜¯5
             Vector3 randomPosition = new Vector3(Random.Range(-spawnArea / 2, spawnArea / 2), 0, Random.Range(-spawnArea / 2, spawnArea / 2));
 
-            // ÔÚËæ»úÎ»ÖÃÉú³ÉÑ¡¶¨µÄÔ¤ÖÆÌå
+            // åœ¨éšæœºä½ç½®ç”Ÿæˆé€‰å®šçš„é¢„åˆ¶ä½“
             Instantiate(prefabToSpawn, randomPosition, Quaternion.identity, parentT.transform);
 
             float waitTime = Random.Range(minGenerateTime, maxGenerateTime);
-            Debug.Log("µÈ´ı"+ waitTime);
-            // µÈ´ı30Ãë
+            Debug.Log("ç­‰å¾…"+ waitTime);
+            // ç­‰å¾…30ç§’
             yield return new WaitForSeconds(waitTime);
         }
     }
@@ -259,14 +259,14 @@ public class GameManage : Singleton<GameManage>
 
     public int secondNpcHp = 2;
 
-    #region ÓÎÏ·×´Ì¬
-    //ÓÎÏ·×´Ì¬
+    #region æ¸¸æˆçŠ¶æ€
+    //æ¸¸æˆçŠ¶æ€
     public void GameStateSet()
     {
         switch (gameStateType)
         {
             case GameStateType.GameStart:
-                // ÓÎÏ·¿ªÊ¼Ê±µÄÂß¼­------ÓÎÏ·½øĞĞÇ°µÄ³õÊ¼»¯
+                // æ¸¸æˆå¼€å§‹æ—¶çš„é€»è¾‘------æ¸¸æˆè¿›è¡Œå‰çš„åˆå§‹åŒ–
                 playerManager.canAttack = false;
                 player.SetActive(false);
                 currentTime = 180;
@@ -279,7 +279,7 @@ public class GameManage : Singleton<GameManage>
 
                 break;
             case GameStateType.TheFirstPass:
-                // ÓÎÏ·½øĞĞÖĞµÄÂß¼­------µã»÷¿ªÊ¼ÓÎÏ·°´Å¥½øĞĞÓÎÏ·------(µÚÒ»¹Ø)
+                // æ¸¸æˆè¿›è¡Œä¸­çš„é€»è¾‘------ç‚¹å‡»å¼€å§‹æ¸¸æˆæŒ‰é’®è¿›è¡Œæ¸¸æˆ------(ç¬¬ä¸€å…³)
                 InterfaceManagement.Instance.gameUIPlane.GetComponent<GameUI>().ClearChild();
                 playerManager.canAttack = true;
                 player.SetActive(true);
@@ -287,15 +287,15 @@ public class GameManage : Singleton<GameManage>
                 enemySecond.SetActive(false);
 
 
-                //´ò¿ªÓÎÏ·UIÃæ°å
-                //¿ªÊ¼¼ÆÊ±¡¢¼Æ·Ö
-                //²¥·ÅÒôÀÖ
-                //¿ªÊ¼¹ÖÎïÉú³É
+                //æ‰“å¼€æ¸¸æˆUIé¢æ¿
+                //å¼€å§‹è®¡æ—¶ã€è®¡åˆ†
+                //æ’­æ”¾éŸ³ä¹
+                //å¼€å§‹æ€ªç‰©ç”Ÿæˆ
 
                 break;
 
             case GameStateType.TheSecondPass:
-                // ----------------------------------------------------(µÚ¶ş¹Ø)
+                // ----------------------------------------------------(ç¬¬äºŒå…³)
                 InterfaceManagement.Instance.gameUIPlane.GetComponent<GameUI>().InitPlayHp();
                 playerManager.canAttack = true;
                 player.SetActive(true);
@@ -303,27 +303,27 @@ public class GameManage : Singleton<GameManage>
                 enemySecond.SetActive(true);
                 break;
             case GameStateType.GameEnd:
-                // ÓÎÏ·½áÊøÊ±µÄÂß¼­------Ê±¼äµÈÓÚ0½áÊøÓÎÏ·
+                // æ¸¸æˆç»“æŸæ—¶çš„é€»è¾‘------æ—¶é—´ç­‰äº0ç»“æŸæ¸¸æˆ
                 playerManager.canAttack = false;
                 player.SetActive(false);
                 enemy.SetActive(false);
                 enemySecond.SetActive(false);
 
-                //µ¯³ö½áÊøÃæ°å
-                //½áÊø¹ÖÎïÉú³É------CancelInvoke(¡°¹ÖÎïÉú³É·½·¨¡±);
-                //½ÇÉ«¹Ø±Õ£¬ÖØÖÃ
+                //å¼¹å‡ºç»“æŸé¢æ¿
+                //ç»“æŸæ€ªç‰©ç”Ÿæˆ------CancelInvoke(â€œæ€ªç‰©ç”Ÿæˆæ–¹æ³•â€);
+                //è§’è‰²å…³é—­ï¼Œé‡ç½®
 
-                //ÖØĞÂ¿ªÊ¼---¡·¿ªÊ¼ÓÎÏ·µÄ³õÊ¼»¯£¨GameStart£©---¡·ÓÎÏ·½øĞĞ£¨Playing£©
-                //Debug.Log("ÓÎÏ·½áÊø£¡");
-                // ¿ÉÒÔÔÚ´Ë´¦Ìí¼ÓÖØÖÃÓÎÏ·×´Ì¬µÈÂß¼­
+                //é‡æ–°å¼€å§‹---ã€‹å¼€å§‹æ¸¸æˆçš„åˆå§‹åŒ–ï¼ˆGameStartï¼‰---ã€‹æ¸¸æˆè¿›è¡Œï¼ˆPlayingï¼‰
+                //Debug.Log("æ¸¸æˆç»“æŸï¼");
+                // å¯ä»¥åœ¨æ­¤å¤„æ·»åŠ é‡ç½®æ¸¸æˆçŠ¶æ€ç­‰é€»è¾‘
                 break;
         }
     }
     #endregion
 
 
-    #region Ö±½Ó½øÈëµÚ¶ş¹Ø
-    public void PlayS()//½øÈëµÚ¶ş¹Ø
+    #region ç›´æ¥è¿›å…¥ç¬¬äºŒå…³
+    public void PlayS()//è¿›å…¥ç¬¬äºŒå…³
     {
         gameStateType = GameStateType.GameStart;
         GameStateSet();
@@ -332,7 +332,7 @@ public class GameManage : Singleton<GameManage>
         CameraPositionRecorderEasy.Instance.MoveMainCameraToRecordedPosition(0);
         treeSecondC.StartDialogue();
     }
-    public void PlaySecondGame()//¶Ô»°Íêºóµ÷ÓÃµÄ
+    public void PlaySecondGame()//å¯¹è¯å®Œåè°ƒç”¨çš„
     {
         CameraPositionRecorderEasy.Instance.MoveMainCameraToRecordedPosition(1);
         gameStateType = GameStateType.TheSecondPass;
@@ -342,16 +342,16 @@ public class GameManage : Singleton<GameManage>
     #endregion
 
 
-    #region JSONµÄÊ¹ÓÃ
+    #region JSONçš„ä½¿ç”¨
     [SerializeField]
-    private string jsonFilePath; // ÎÄ¼şÂ·¾¶
+    private string jsonFilePath; // æ–‡ä»¶è·¯å¾„
     public List<PersonData> personList = new List<PersonData>();
     private DataContainer dataContainer;
     void CreateEmptyJsonFile()
     {
-        dataContainer = new DataContainer { entries = new PersonData[0] }; // ³õÊ¼»¯Ò»¸ö¿ÕµÄÊı¾İÈİÆ÷
-        string initialJson = JsonUtility.ToJson(dataContainer, true); // ¸ñÊ½»¯Êä³ö
-        Directory.CreateDirectory(Path.GetDirectoryName(jsonFilePath)); // È·±£Ä¿Â¼´æÔÚ
+        dataContainer = new DataContainer { entries = new PersonData[0] }; // åˆå§‹åŒ–ä¸€ä¸ªç©ºçš„æ•°æ®å®¹å™¨
+        string initialJson = JsonUtility.ToJson(dataContainer, true); // æ ¼å¼åŒ–è¾“å‡º
+        Directory.CreateDirectory(Path.GetDirectoryName(jsonFilePath)); // ç¡®ä¿ç›®å½•å­˜åœ¨
         File.WriteAllText(jsonFilePath, initialJson);
     }
 
@@ -361,7 +361,7 @@ public class GameManage : Singleton<GameManage>
         {
             string jsonData = File.ReadAllText(jsonFilePath);
             dataContainer = JsonUtility.FromJson<DataContainer>(jsonData);
-            // ½«entriesÊı×é×ª»»ÎªList<PersonData>£¨Èç¹ûÄãĞèÒªµÄ»°£©
+            // å°†entriesæ•°ç»„è½¬æ¢ä¸ºList<PersonData>ï¼ˆå¦‚æœä½ éœ€è¦çš„è¯ï¼‰
             personList = new List<PersonData>(dataContainer.entries);
         }
         else
@@ -370,47 +370,47 @@ public class GameManage : Singleton<GameManage>
         }
     }
 
-    // Ìí¼ÓÊı¾İµÄ·½·¨
+    // æ·»åŠ æ•°æ®çš„æ–¹æ³•
     public void AddPersonData(string name, bool jsonSecond)
     {
-        // ´´½¨Ò»¸öĞÂµÄPersonDataÊµÀı
+        // åˆ›å»ºä¸€ä¸ªæ–°çš„PersonDataå®ä¾‹
         PersonData newData = new PersonData
         {
             name = name,
             jsonSecond = jsonSecond
         };
 
-        // ½«ĞÂµÄPersonDataÊµÀıÌí¼Óµ½ÁĞ±íÖĞ
+        // å°†æ–°çš„PersonDataå®ä¾‹æ·»åŠ åˆ°åˆ—è¡¨ä¸­
         personList.Add(newData);
 
-        // ´òÓ¡È·ÈÏĞÅÏ¢
+        // æ‰“å°ç¡®è®¤ä¿¡æ¯
         Debug.Log("Added: " + newData.name + ", " + newData.jsonSecond);
     }
 
-    // ¸ù¾İÃû×Ö²éÕÒ²¢·µ»Ø¶ÔÓ¦µÄPersonDataĞÅÏ¢
+    // æ ¹æ®åå­—æŸ¥æ‰¾å¹¶è¿”å›å¯¹åº”çš„PersonDataä¿¡æ¯
     public PersonData FindPersonByName(string nameToFind)
     {
-        // Ê¹ÓÃFirstOrDefault²éÕÒµÚÒ»¸öÆ¥ÅäµÄÃû×Ö
-        // Èç¹ûÃ»ÓĞÕÒµ½Æ¥ÅäÏî£¬Ôò·µ»Ønull
+        // ä½¿ç”¨FirstOrDefaultæŸ¥æ‰¾ç¬¬ä¸€ä¸ªåŒ¹é…çš„åå­—
+        // å¦‚æœæ²¡æœ‰æ‰¾åˆ°åŒ¹é…é¡¹ï¼Œåˆ™è¿”å›null
         var foundPerson = personList.FirstOrDefault(person => person.name == nameToFind);
 
         return foundPerson;
     }
 
-    // ĞòÁĞ»¯List<PersonData>µ½JSON×Ö·û´®µÄ·½·¨
+    // åºåˆ—åŒ–List<PersonData>åˆ°JSONå­—ç¬¦ä¸²çš„æ–¹æ³•
     public void SerializePersonDataList(List<PersonData> personDataList)
     {
-        // ½«List<PersonData>×ª»»ÎªPersonData[]£¬ÒòÎªDataContainerÆÚÍûµÄÊÇÊı×é
+        // å°†List<PersonData>è½¬æ¢ä¸ºPersonData[]ï¼Œå› ä¸ºDataContaineræœŸæœ›çš„æ˜¯æ•°ç»„
         PersonData[] entriesArray = personDataList.ToArray();
 
-        // ´´½¨DataContainerÊµÀı²¢¸³Öµ
+        // åˆ›å»ºDataContainerå®ä¾‹å¹¶èµ‹å€¼
         DataContainer dataContainer = new DataContainer
         {
             entries = entriesArray
         };
 
-        // Ê¹ÓÃJsonUtility½«DataContainerÊµÀıĞòÁĞ»¯ÎªJSON×Ö·û´®
-        string initialJ = JsonUtility.ToJson(dataContainer, true); // µÚ¶ş¸ö²ÎÊıÎªtrue»áÃÀ»¯Êä³öµÄJSON×Ö·û´®
+        // ä½¿ç”¨JsonUtilityå°†DataContainerå®ä¾‹åºåˆ—åŒ–ä¸ºJSONå­—ç¬¦ä¸²
+        string initialJ = JsonUtility.ToJson(dataContainer, true); // ç¬¬äºŒä¸ªå‚æ•°ä¸ºtrueä¼šç¾åŒ–è¾“å‡ºçš„JSONå­—ç¬¦ä¸²
         File.WriteAllText(jsonFilePath, initialJ);
     }
     #endregion

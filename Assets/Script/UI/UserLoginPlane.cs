@@ -1,4 +1,4 @@
-using TMPro;
+ï»¿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,10 +6,10 @@ public class UserLoginPlane : MonoBehaviour
 {
 
     [SerializeField]
-    private TMP_InputField userName;        //ÓÃ»§Ãû
+    private TMP_InputField userName;        //ç”¨æˆ·å
 
     [SerializeField]
-    private Button login_BTN;           //µÇÂ¼°´Å¥
+    private Button login_BTN;           //ç™»å½•æŒ‰é’®
 
     public static string userNameLabel;
     private void Awake()
@@ -18,7 +18,7 @@ public class UserLoginPlane : MonoBehaviour
         userName.onValueChanged.AddListener(CheckWhetherUserExists);
     }
 
-    //ÓÃ»§ÊäÈë
+    //ç”¨æˆ·è¾“å…¥
     public void CheckWhetherUserExists(string _name)
     {
         if (userName.text != "")
@@ -30,7 +30,7 @@ public class UserLoginPlane : MonoBehaviour
             login_BTN.interactable = false;
     }
 
-    //±£´æÓÃ»§ĞÅÏ¢
+    //ä¿å­˜ç”¨æˆ·ä¿¡æ¯
     public void SaveUser()
     {
         if (!GameManage.Instance.personList.Contains(GameManage.Instance.FindPersonByName(userNameLabel)))

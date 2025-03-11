@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 
 public class StartPlane : MonoBehaviour
@@ -27,7 +27,7 @@ public class StartPlane : MonoBehaviour
     [SerializeField]
     private bool isEnableSecond = false;
     [SerializeField]
-    private string isName= "ÕÅÈı";
+    private string isName= "å¼ ä¸‰";
     private void Start()
     {
         PersonData result = GameManage.Instance.FindPersonByName(isName);
@@ -48,7 +48,7 @@ public class StartPlane : MonoBehaviour
             secondBTN.gameObject.SetActive(true);
         }
     }
-    //¿ªÊ¼
+    //å¼€å§‹
     public void StartClick()
     {
         GameManage.Instance.isFirst = true;
@@ -59,7 +59,7 @@ public class StartPlane : MonoBehaviour
         InterfaceManagement.Instance.OpenLoadPlane();
     }
 
-    //Ñ¡Ôñ¹Ø¿¨½çÃæ
+    //é€‰æ‹©å…³å¡ç•Œé¢
     public void StartSecondClick()
     {
         //InterfaceManagement.Instance.OpenSelectLevelPlane();
@@ -68,13 +68,13 @@ public class StartPlane : MonoBehaviour
         GameManage.Instance.PlayS();
     }
 
-    //ÓÃ»§µÇÂ¼
+    //ç”¨æˆ·ç™»å½•
     public void UserLoginClick()
     {
         InterfaceManagement.Instance.OpenUserLoginPlane();
     }
 
-    //ÅĞ¶ÏÓÃ»§ÊÇ·ñ½âËøµÚ¶ş¹Ø
+    //åˆ¤æ–­ç”¨æˆ·æ˜¯å¦è§£é”ç¬¬äºŒå…³
     public void JudgeUserUnlockLevel()
     {
         if (UserLoginPlane.userNameLabel == "" || GameManage.Instance.FindPersonByName(UserLoginPlane.userNameLabel) == null)
@@ -92,7 +92,7 @@ public class StartPlane : MonoBehaviour
         }
     }
 
-    //ÍË³ö
+    //é€€å‡º
     public void ExitClick()
     {
 #if UNITY_EDITOR

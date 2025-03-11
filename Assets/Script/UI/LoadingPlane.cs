@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,12 +8,12 @@ using NodeCanvas.Framework;
 public class LoadingPlane : MonoBehaviour
 {
     [SerializeField]
-    private Image loadSliderValue;          //½ø¶ÈÌõ
+    private Image loadSliderValue;          //è¿›åº¦æ¡
 
     [SerializeField]
-    private TMP_Text loadNumber_Text;       //ÎÄ±¾ÎÄ×Ö
+    private TMP_Text loadNumber_Text;       //æ–‡æœ¬æ–‡å­—
 
-    #region ÆúÓÃ
+    #region å¼ƒç”¨
     //private float fixedTime = 0.0f;
     //private float target = 1.0f;
     //private float fixedDeltaTime = 0.0f;
@@ -22,7 +22,7 @@ public class LoadingPlane : MonoBehaviour
     private void FixedUpdate()
     {
 
-        #region ¹ı³¡UI£¨ÆúÓÃ£©
+        #region è¿‡åœºUIï¼ˆå¼ƒç”¨ï¼‰
         //if (loadSliderValue.fillAmount == 1)
         //    return;
 
@@ -41,10 +41,10 @@ public class LoadingPlane : MonoBehaviour
 
     [SerializeField] DialogueTreeController treeOneC;
     [SerializeField] Blackboard NpcB;
-    //¼ì²âÊÇ·ñ¶Ô»°¹ı£¬¶Ô»°¹ı¾ÍÖ±½ÓÌø¹ı¶Ô»°
+    //æ£€æµ‹æ˜¯å¦å¯¹è¯è¿‡ï¼Œå¯¹è¯è¿‡å°±ç›´æ¥è·³è¿‡å¯¹è¯
     private void OnEnable()
     {
-        //ÔÚÕâÀï½øĞĞÒ»´ÎÅĞ¶Ï£¬À´ÏÔÊ¾²»Í¬µÄ¶Ô»°£¬»òÊÇ²»ÏÔÊ¾¶Ô»°
+        //åœ¨è¿™é‡Œè¿›è¡Œä¸€æ¬¡åˆ¤æ–­ï¼Œæ¥æ˜¾ç¤ºä¸åŒçš„å¯¹è¯ï¼Œæˆ–æ˜¯ä¸æ˜¾ç¤ºå¯¹è¯
         Debug.Log(NpcB.GetVariableValue<bool>("EndS"));
         if (NpcB.GetVariableValue<bool>("EndS"))
         {
@@ -57,19 +57,19 @@ public class LoadingPlane : MonoBehaviour
 
     }
 
-    //¿ªÊ¼ÓÎÏ·
+    //å¼€å§‹æ¸¸æˆ
     public void PlayGame()
     {
         CameraPositionRecorderEasy.Instance.MoveMainCameraToRecordedPosition(1);
-        //Debug.LogError("¿ªÊ¼ÓÎÏ·");
+        //Debug.LogError("å¼€å§‹æ¸¸æˆ");
         GameManage.Instance.gameStateType = GameManage.GameStateType.TheFirstPass;
         GameManage.Instance.GameStateSet();
 
-        #region ÆúÓÃ
+        #region å¼ƒç”¨
         //loadSliderValue.fillAmount = 0;
         //fixedTime = 0.0f;
         //fixedDeltaTime = 0.0f;
-        //GameManage.Instance.ToggleSpawn(true);//µÀ¾ßÉú³É
+        //GameManage.Instance.ToggleSpawn(true);//é“å…·ç”Ÿæˆ
         #endregion
 
         InterfaceManagement.Instance.OpenGameUIPlane();

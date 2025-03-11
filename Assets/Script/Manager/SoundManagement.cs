@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+锘縰sing System.Collections.Generic;
 using UnityEngine;
 
 public class SoundManagement : MonoBehaviour
@@ -7,11 +7,11 @@ public class SoundManagement : MonoBehaviour
 
     public enum AudioSourceType
     {
-        hitSFX = 1,             //击打音效
-        scoreSFX = 2,           //得分音效
-        deductionSFX = 3,       //减分音效
-        pickUpPropsSFX = 4,     //拾取道具
-        endSFX = 5,             //结束界面音效
+        hitSFX = 1,             //鍑绘墦闊虫晥
+        scoreSFX = 2,           //寰楀垎闊虫晥
+        deductionSFX = 3,       //鍑忓垎闊虫晥
+        pickUpPropsSFX = 4,     //鎷惧彇閬撳叿
+        endSFX = 5,             //缁撴潫鐣岄潰闊虫晥
     }
 
     public AudioSource BGM;
@@ -24,13 +24,13 @@ public class SoundManagement : MonoBehaviour
             Instance = this;
     }
 
-    //播放BGM
+    //鎾斁BGM
     public void PlayBGM()
     {
         BGM.Play();
     }
 
-    //播放音效
+    //鎾斁闊虫晥
     public void PlaySFX(int ID)
     {
         SFX.clip = SFXList[ID];

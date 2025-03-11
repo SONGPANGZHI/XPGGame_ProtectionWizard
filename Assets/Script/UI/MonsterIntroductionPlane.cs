@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -14,7 +14,7 @@ public class MonsterIntroductionPlane : MonoBehaviour
 
     public List<NewMonster> newMonstersList;
 
-    //³õÊ¼»¯
+    //åˆå§‹åŒ–
 
     public void InitMonsterDesc(int ID)
     {
@@ -23,7 +23,7 @@ public class MonsterIntroductionPlane : MonoBehaviour
         Invoke("CloseMonsterDesc", 3F);
     }
 
-    //3s ¹Ø±Õ½çÃæ
+    //3s å…³é—­ç•Œé¢
     public void CloseMonsterDesc()
     {
         Time.timeScale = 1;

@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
@@ -28,11 +28,11 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         if (_instance == null)
         {
             _instance = this as T;
-            DontDestroyOnLoad(gameObject); // Èç¹ûÏ£ÍûÔÚ³¡¾°ÇĞ»»Ê±Ò²±£³ÖÊµÀı£¬¿ÉÒÔ¼ÓÉÏÕâÒ»ĞĞ
+            DontDestroyOnLoad(gameObject); // å¦‚æœå¸Œæœ›åœ¨åœºæ™¯åˆ‡æ¢æ—¶ä¹Ÿä¿æŒå®ä¾‹ï¼Œå¯ä»¥åŠ ä¸Šè¿™ä¸€è¡Œ
         }
         else
         {
-            Destroy(gameObject); // È·±£²»»á´æÔÚ¶à¸öÊµÀı
+            Destroy(gameObject); // ç¡®ä¿ä¸ä¼šå­˜åœ¨å¤šä¸ªå®ä¾‹
         }
     }
 }
