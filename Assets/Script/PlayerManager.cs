@@ -76,6 +76,7 @@ public class PlayerManager : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal"); // 获取水平输入(A/D)
         float moveVertical = Input.GetAxis("Vertical"); // 获取垂直输入(W/S)
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical); // 创建移动向量
+
         // 根据输入更新位置
         player.transform.Translate(movement * speed * Time.deltaTime);
 
