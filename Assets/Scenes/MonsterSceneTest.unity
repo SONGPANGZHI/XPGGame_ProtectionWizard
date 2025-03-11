@@ -2404,6 +2404,7 @@ MonoBehaviour:
   maxGenerateTime: 30
   monsterAttributes: {fileID: 609079147}
   jsonSecond: 0
+  UnlockCredits: 600
   treeSecondC: {fileID: 1566180657}
   isFirst: 0
   isSecond: 0
@@ -4829,6 +4830,8 @@ MonoBehaviour:
     content: "\u603B\u5206\u7A81\u7834100\u5206\uFF01"
   - index: 8
     content: "\u603B\u5206\u7A81\u7834200\u5206\uFF01"
+  - index: 9
+    content: "\u8BA4\u77E5\u529B\u5347\u7EA7\uFF01\u65B0\u5173\u5361\u5DF2\u89E3\u9501\uFF01"
   I_content: 
 --- !u!4 &1619064895
 Transform:

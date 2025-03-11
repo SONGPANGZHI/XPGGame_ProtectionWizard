@@ -32,7 +32,6 @@ public class IncentiveSystemUI : Singleton<IncentiveSystemUI>
     private bool hitThree = false;
     private bool scoreOne = false;
     private bool scoreTwo = false;
-    private bool scoreThree = false;
     public void MonitorOther()
     {
         if (DoubleHitManager.Instance.doubleHitCount == 0)
@@ -75,6 +74,7 @@ public class IncentiveSystemUI : Singleton<IncentiveSystemUI>
             Export_EncouragingContentEn(8);
             scoreTwo = false;
         }
+
     }
     public void Set_enableTime()
     {

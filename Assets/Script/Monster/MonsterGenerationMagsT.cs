@@ -40,8 +40,6 @@ public class MonsterGenerationMagsT : MonoBehaviour
     private int scorePhaseOne = 100;
     [SerializeField]
     private int scorePhaseTwo = 200;
-    [SerializeField]
-    private int scorePhaseTree = 300;
 
     bool firstBool;
     bool secondBool;

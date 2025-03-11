@@ -67,6 +67,7 @@ public class GameManage : Singleton<GameManage>
 
     public bool jsonSecond = false;
     private bool whetherUnlock=false;//第二关解锁标志
+    public int UnlockCredits=1000;
     [SerializeField] 
     DialogueTreeController treeSecondC;
 
@@ -83,13 +84,14 @@ public class GameManage : Singleton<GameManage>
             //UpdateCounterText();
         }
 
-        if (ScoreManagement.Instance.TotalScore>=1000 && whetherUnlock==false)
+        if (ScoreManagement.Instance.TotalScore>= UnlockCredits && whetherUnlock==false)
         {
             whetherUnlock = true;
             jsonSecond = true;
             //用第二套怪物生成（多种怪，根据积分）
-            Debug.Log("第二关解锁了！！！");
-        }else if (ScoreManagement.Instance.TotalScore >= 0 && ScoreManagement.Instance.TotalScore <= 1000)
+            //Debug.Log("第二关解锁了！！！");
+            IncentiveSystemUI.Instance.Export_EncouragingContentEn(9);
+        }else if (ScoreManagement.Instance.TotalScore >= 0 && ScoreManagement.Instance.TotalScore <= UnlockCredits)
         {
             whetherUnlock = false;
         }
