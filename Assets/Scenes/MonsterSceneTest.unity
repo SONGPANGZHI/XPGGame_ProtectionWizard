@@ -4813,7 +4813,7 @@ MonoBehaviour:
   t: {fileID: 1216266687}
   incentiveSS:
   - index: 0
-    content: "\u8BC6\u522B\u6210\u529F\uFF01\u5E72\u5F97\u6F02\u4EAE\uFF01"
+    content: "\u5E72\u5F97\u6F02\u4EAE\uFF01"
   - index: 1
     content: "\u7CBE\u51C6\u51FA\u51FB\uFF01\u592A\u68D2\u4E86\uFF01"
   - index: 2
@@ -4832,6 +4832,12 @@ MonoBehaviour:
     content: "\u603B\u5206\u7A81\u7834200\u5206\uFF01"
   - index: 9
     content: "\u8BA4\u77E5\u529B\u5347\u7EA7\uFF01\u65B0\u5173\u5361\u5DF2\u89E3\u9501\uFF01"
+  - index: 10
+    content: 10
+  - index: 11
+    content: 11
+  - index: 12
+    content: 12
   I_content: 
 --- !u!4 &1619064895
 Transform:
@@ -5168,7 +5174,6 @@ MonoBehaviour:
   score: 0
   scorePhaseOne: 100
   scorePhaseTwo: 200
-  scorePhaseTree: 300
 --- !u!1 &1786933214
 GameObject:
   m_ObjectHideFlags: 0
