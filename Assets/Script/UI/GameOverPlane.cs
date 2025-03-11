@@ -1,4 +1,4 @@
-using TMPro;
+ï»¿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,24 +31,24 @@ public class GameOverPlane : MonoBehaviour
         GetTotalScore();
     }
 
-    //»ñÈ¡×ÜµÃ·Ö
+    //è·å–æ€»å¾—åˆ†
     public void GetTotalScore()
     {
         score_Text.text = GameManage.Instance.getTotalScore.ToString();
     }
-    //·µ»ØÖ÷½çÃæ
+    //è¿”å›ä¸»ç•Œé¢
     public void MainClick()
     {
         InterfaceManagement.Instance.OpenStarPlane();
     }
 
-    //»ñÈ¡×ÜÊ±¼ä
+    //è·å–æ€»æ—¶é—´
     public void GetTotalTime() 
     {
     
     }  
 
-    //ÖØĞÂ¿ªÊ¼ÓÎÏ·
+    //é‡æ–°å¼€å§‹æ¸¸æˆ
     public void RestartClick()
     {
         if (GameManage.Instance.isSecond==true&& GameManage.Instance.isFirst==false)
@@ -65,7 +65,7 @@ public class GameOverPlane : MonoBehaviour
 
     }
 
-    //ÍË³öÓÎÏ·
+    //é€€å‡ºæ¸¸æˆ
     public void ExitClick()
     {
 #if UNITY_EDITOR

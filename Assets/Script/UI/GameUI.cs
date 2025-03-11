@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking.Types;
@@ -24,7 +24,7 @@ public class GameUI : MonoBehaviour
         if (GameManage.Instance.isSecond)
             InitPlayHp();
     }
-    //³õÊ¼»¯ÑªÌõ
+    //åˆå§‹åŒ–è¡€æ¡
 
     public void InitPlayHp()
     {
@@ -36,14 +36,14 @@ public class GameUI : MonoBehaviour
         }
     }
 
-    //¿ÛÑª
+    //æ‰£è¡€
     public void ReduceHP()
     {
         playHPTotal -= 1;
         hpTrans.GetChild(playHPTotal).GetComponent<HpPrefab>().CloseHPRed();
     }
 
-    //Çå³ı×ÓÎïÌå
+    //æ¸…é™¤å­ç‰©ä½“
     public void ClearChild()
     {
         for (int i = 0; i < hpTrans.childCount; i++)

@@ -1,4 +1,4 @@
-using System.Collections;
+锘縰sing System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -20,13 +20,13 @@ public class DialogueManager : MonoBehaviour
         SetDialogues(dialogues);
     }
 
-    //外部调用
+    //澶栭儴璋冪敤
     public void SetDia()
     {
         SetDialogues(dialogues);
     }
 
-    // 设置对话数组
+    // 璁剧疆瀵硅瘽鏁扮粍
     public void SetDialogues(Dialogue[] newDialogues)
     {
         dialogues = newDialogues;
@@ -53,7 +53,7 @@ public class DialogueManager : MonoBehaviour
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(0.05f); // 调整速度
+            yield return new WaitForSeconds(0.05f); // 璋冩暣閫熷害
         }
         isTyping = false;
     }

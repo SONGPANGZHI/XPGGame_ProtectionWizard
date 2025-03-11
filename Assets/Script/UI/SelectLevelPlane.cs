@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +16,7 @@ public class SelectLevelPlane : MonoBehaviour
         difficulty_BTN.onClick.AddListener(DifficultyClick);
     }
 
-    //��ģʽ
+    //简单模式
     public void EasyClick()
     {
         GameManage.Instance.isFirst = true;
@@ -27,7 +27,7 @@ public class SelectLevelPlane : MonoBehaviour
         InterfaceManagement.Instance.OpenLoadPlane();
     }
 
-    //����ģʽ
+    //困难模式
     public void DifficultyClick()
     {
         GameManage.Instance.isFirst = false;

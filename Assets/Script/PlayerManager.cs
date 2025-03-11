@@ -1,44 +1,44 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public float speed = 5.0f; // ÒÆ¶¯ËÙ¶È
-    public GameObject player;//Ö÷½Ç
+    public float speed = 5.0f; // ç§»åŠ¨é€Ÿåº¦
+    public GameObject player;//ä¸»è§’
     private bool canMove=true;
     public bool canAttack = true;
 
 
-    public CameraShake cameraShake;//ÉãÏñ»ú¶¶¶¯
+    public CameraShake cameraShake;//æ‘„åƒæœºæŠ–åŠ¨
     public float shakeDurationP = 0.3f;
     public float shakeMagnitudeP = 0.7f;
 
     public GameObject attackCube;
     private float deactivateTriggerTime;
     [SerializeField]
-    private bool isProcessing = false; // ĞÂÔö£ºÓÃÓÚÅĞ¶ÏÊÇ·ñÕıÔÚ´¦ÀíÅö×²
-    public float attackTime=1f;//¹¥»÷ÓÃÊ±
+    private bool isProcessing = false; // æ–°å¢ï¼šç”¨äºåˆ¤æ–­æ˜¯å¦æ­£åœ¨å¤„ç†ç¢°æ’
+    public float attackTime=1f;//æ”»å‡»ç”¨æ—¶
 
-    //public int TotalScore;//×Ü·Ö
-    //public int addScoer;//×ÜµÄ¼ÓµÄ·ÖÊı
-    //public int subtractScoer;//×ÜµÄ¿ÛµÄ·ÖÊı
+    //public int TotalScore;//æ€»åˆ†
+    //public int addScoer;//æ€»çš„åŠ çš„åˆ†æ•°
+    //public int subtractScoer;//æ€»çš„æ‰£çš„åˆ†æ•°
 
     public Animator animatorP;
 
-    public bool InceptionSet=false;//³õÊ¼ÉèÖÃ
+    public bool InceptionSet=false;//åˆå§‹è®¾ç½®
 
     public Rigidbody rb;
 
     void Update()
     {
-        //ÕâÁ½¿ªÊ¼ĞèÒªÌõ¼ş
+        //è¿™ä¸¤å¼€å§‹éœ€è¦æ¡ä»¶
 
-        //KeepTime();//¼ÆÊ±
-        //Score();//µÃ·Ö
+        //KeepTime();//è®¡æ—¶
+        //Score();//å¾—åˆ†
         //UpdateCounterText();
 
         if (canMove)
         {
-            // ¼ì²éÍæ¼ÒÊÇ·ñÓĞË®Æ½»ò´¹Ö±·½ÏòµÄÊäÈë
+            // æ£€æŸ¥ç©å®¶æ˜¯å¦æœ‰æ°´å¹³æˆ–å‚ç›´æ–¹å‘çš„è¾“å…¥
             bool hasInput = Mathf.Abs(Input.GetAxis("Horizontal")) > 0f || Mathf.Abs(Input.GetAxis("Vertical")) > 0f;
             //player.GetComponent<Animator>().SetTrigger("Run");
             if (!hasInput)
@@ -48,7 +48,7 @@ public class PlayerManager : MonoBehaviour
 
         }
 
-        if (Input.GetMouseButtonDown(0)&& canAttack) // ¼ì²âÊó±ê×ó¼üÊÇ·ñ±»°´ÏÂ
+        if (Input.GetMouseButtonDown(0)&& canAttack) // æ£€æµ‹é¼ æ ‡å·¦é”®æ˜¯å¦è¢«æŒ‰ä¸‹
         {
             Attack();
         }
@@ -62,41 +62,41 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    //¼Ó¼õÊ±¼ä½»»¥
+    //åŠ å‡æ—¶é—´äº¤äº’
     public void AddTime(float additionalTime)
     {
         GameManage.Instance.AddT(additionalTime);
     }
 
 
-    //ÈËÎï¿ØÖÆ
+    //äººç‰©æ§åˆ¶
     public void CharacterControl()
     {
-        //ÒÆ¶¯
-        float moveHorizontal = Input.GetAxis("Horizontal"); // »ñÈ¡Ë®Æ½ÊäÈë(A/D)
-        float moveVertical = Input.GetAxis("Vertical"); // »ñÈ¡´¹Ö±ÊäÈë(W/S)
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical); // ´´½¨ÒÆ¶¯ÏòÁ¿
-        // ¸ù¾İÊäÈë¸üĞÂÎ»ÖÃ
+        //ç§»åŠ¨
+        float moveHorizontal = Input.GetAxis("Horizontal"); // è·å–æ°´å¹³è¾“å…¥(A/D)
+        float moveVertical = Input.GetAxis("Vertical"); // è·å–å‚ç›´è¾“å…¥(W/S)
+        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical); // åˆ›å»ºç§»åŠ¨å‘é‡
+        // æ ¹æ®è¾“å…¥æ›´æ–°ä½ç½®
         player.transform.Translate(movement * speed * Time.deltaTime);
 
-        //Ğı×ªËø¶¨
-        // »ñÈ¡µ±Ç°ÎïÌåµÄĞı×ª
+        //æ—‹è½¬é”å®š
+        // è·å–å½“å‰ç‰©ä½“çš„æ—‹è½¬
         Quaternion currentRotation = transform.rotation;
-        // ÖØĞÂ¼ÆËãĞı×ª£¬Ê¹µÃÎïÌåµÄZÖá³¯ÏòÊÀ½ç×ø±êÏµµÄZÖá
-        // ÕâÀïÎÒÃÇ½ö±£ÁôÁËÈÆZÖáµÄĞı×ª²¿·Ö£¬Çå³ıÁËÈÆXºÍYÖáµÄĞı×ª
+        // é‡æ–°è®¡ç®—æ—‹è½¬ï¼Œä½¿å¾—ç‰©ä½“çš„Zè½´æœå‘ä¸–ç•Œåæ ‡ç³»çš„Zè½´
+        // è¿™é‡Œæˆ‘ä»¬ä»…ä¿ç•™äº†ç»•Zè½´çš„æ—‹è½¬éƒ¨åˆ†ï¼Œæ¸…é™¤äº†ç»•Xå’ŒYè½´çš„æ—‹è½¬
         Vector3 eulerRotation = currentRotation.eulerAngles;
         player.transform.rotation = Quaternion.Euler(0, 0, eulerRotation.z);
     }
-    //ÈËÎï¹¥»÷
+    //äººç‰©æ”»å‡»
     public void Attack()
     {
-        //¹¥»÷Ïà¹Ø------¹¥»÷Ê±²»ÄÜÒÆ¶¯
-        //1¡¢¶¯»­
-        //2¡¢´¥·¢Æ÷
-        //ÆäËû
+        //æ”»å‡»ç›¸å…³------æ”»å‡»æ—¶ä¸èƒ½ç§»åŠ¨
+        //1ã€åŠ¨ç”»
+        //2ã€è§¦å‘å™¨
+        //å…¶ä»–
 
 
-        //¾µÍ·¶¶¶¯
+        //é•œå¤´æŠ–åŠ¨
         Invoke("Shake", 0.5f);
         
         animatorP.SetTrigger("Attack");
@@ -113,11 +113,11 @@ public class PlayerManager : MonoBehaviour
 
     public void Shake()
     {
-        cameraShake.TriggerShake(shakeDurationP, shakeMagnitudeP);//Õğ¶¯³ÖĞøÊ±¼ä¡¢´óĞ¡
+        cameraShake.TriggerShake(shakeDurationP, shakeMagnitudeP);//éœ‡åŠ¨æŒç»­æ—¶é—´ã€å¤§å°
     }
     private void OnTriggerEnter(Collider other)
     {
-        // ºöÂÔÓë×Ô¼º(Player)µÄÅö×²
+        // å¿½ç•¥ä¸è‡ªå·±(Player)çš„ç¢°æ’
         if (other.gameObject.tag != "Goodness"&&other.gameObject.tag!="Evil") return;
 
         if (isProcessing) return;
@@ -125,7 +125,7 @@ public class PlayerManager : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Goodness":
-                //HIT·½·¨¡¢¿Û·Ö
+                //HITæ–¹æ³•ã€æ‰£åˆ†
                 if (!other.transform.parent.GetComponent<MonsterAttributes>().TriggerOnce)
                 {
                     other.transform.parent.GetComponent<MonsterAttributes>().TriggerOnce = true;
@@ -133,10 +133,10 @@ public class PlayerManager : MonoBehaviour
                     DoubleHitManager.Instance.ClearDoubleHitCount();
                     isProcessing = true;
                 }
-                Debug.Log("´òµ½ÓÑ·½");
+                Debug.Log("æ‰“åˆ°å‹æ–¹");
                 break;
             case "Evil":
-                //hit·½·¨¡¢¼Ó·Ö
+                //hitæ–¹æ³•ã€åŠ åˆ†
                 if (!other.transform.parent.GetComponent<MonsterAttributes>().TriggerOnce)
                 {
                     other.transform.parent.GetComponent<MonsterAttributes>().TriggerOnce = true;
@@ -161,7 +161,7 @@ public class PlayerManager : MonoBehaviour
                         {
                             DoubleHitManager.Instance.JudgeDoubleHit(10);
                         }
-                        Debug.LogError("¿ªÊ¼¼ÆËãÁ¬»÷");
+                        Debug.LogError("å¼€å§‹è®¡ç®—è¿å‡»");
                     }
                     else
                     {
@@ -177,7 +177,7 @@ public class PlayerManager : MonoBehaviour
                     GameManage.Instance.currentCount += 1;
                     isProcessing = true;
                 }
-                Debug.Log("´òµ½µĞ·½");
+                Debug.Log("æ‰“åˆ°æ•Œæ–¹");
                 break;
         }
     }

@@ -1,4 +1,4 @@
-using System.Collections;
+锘縰sing System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -9,7 +9,7 @@ public class MonsterGenerationMagsT : MonoBehaviour
     private List<Transform> monsterPointList;
 
     [SerializeField]
-    private GameObject goodnessPrefab2;//掉血npc
+    private GameObject goodnessPrefab2;//鎺夎npc
 
     [SerializeField]
     private GameObject evilPrefab1;
@@ -18,7 +18,7 @@ public class MonsterGenerationMagsT : MonoBehaviour
     [SerializeField]
     private GameObject evilPrefab3;
 
-    public int score = 0; // 分数
+    public int score = 0; // 鍒嗘暟
 
     private void OnEnable()
     {
@@ -29,7 +29,7 @@ public class MonsterGenerationMagsT : MonoBehaviour
     {
         CancelInvoke("FristCreateMonter");
     }
-    //第一次生成怪物
+    //绗竴娆＄敓鎴愭�墿
     public void FristCreateMonter()
     {
         monsterPointList.ShuffleT();
@@ -129,7 +129,7 @@ public class MonsterGenerationMagsT : MonoBehaviour
         }
     }
 
-    //显示怪物提醒界面
+    //鏄剧ず鎬墿鎻愰啋鐣岄潰
     public void ShowMonsterDescPlane(int ID)
     {
         //Time.timeScale = 0;
@@ -139,7 +139,7 @@ public class MonsterGenerationMagsT : MonoBehaviour
 
 }
 
-//打乱List顺序
+//鎵撲贡List椤哄簭
 public static class ListExtensionsT
 {
     public static void ShuffleT<T>(this List<T> list)

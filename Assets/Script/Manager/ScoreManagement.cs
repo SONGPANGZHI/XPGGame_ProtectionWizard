@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class ScoreManagement : MonoBehaviour
 {
@@ -12,13 +12,13 @@ public class ScoreManagement : MonoBehaviour
 
     public int TotalScore;
 
-    //µÃ·Ö
+    //å¾—åˆ†
     public int GetScore(int addNum)
     {
         return TotalScore += addNum;
     }
 
-    //¿Û·Ö
+    //æ‰£åˆ†
     public int DeductionScore(int reduceNum)
     {
         int currentScore = TotalScore -= reduceNum;

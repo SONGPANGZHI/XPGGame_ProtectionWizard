@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +7,7 @@ public class ParticleTrailManagement : MonoBehaviour
     public static ParticleTrailManagement instance;
 
     [SerializeField]
-    private Transform targetPos;            //Ä¿±êµã
+    private Transform targetPos;            //ç›®æ ‡ç‚¹
     [SerializeField]
     private GameObject targetParticle;
     private void Awake()

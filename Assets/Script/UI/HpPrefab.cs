@@ -1,10 +1,10 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HpPrefab : MonoBehaviour
 {
-    //¹ØµôºìÐÄ
+    //å…³æŽ‰çº¢å¿ƒ
     public void CloseHPRed()
     { 
         transform.GetChild(0).gameObject.SetActive(false);

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +7,7 @@ public class DoubleHitManager : MonoBehaviour
     public static DoubleHitManager Instance;
 
     public int doubleHitCount = 0;
-    public int limitTime = 10;               //Á¬»÷Ê±¼äÏŞÖÆ Ôİ¶¨10s
+    public int limitTime = 10;               //è¿å‡»æ—¶é—´é™åˆ¶ æš‚å®š10s
     public float doubleHitScore;
 
     public GameObject doubleHit_UI;
@@ -25,7 +25,7 @@ public class DoubleHitManager : MonoBehaviour
 
     }
 
-    //Á¬»÷´ÎÊıÅĞ¶Ï
+    //è¿å‡»æ¬¡æ•°åˆ¤æ–­
     public void JudgeDoubleHit(int a)
     {
         doubleHitScore = 0;
@@ -50,7 +50,7 @@ public class DoubleHitManager : MonoBehaviour
 
             RewardT = 10f;
             sl.fillAmount = 1;
-            DebugColorRed("¿ªÊ¼¼ÆÊ±");
+            DebugColorRed("å¼€å§‹è®¡æ—¶");
             timewait = true;
             StartCoroutine(TimeFunc(limitTime));
 
@@ -62,7 +62,7 @@ public class DoubleHitManager : MonoBehaviour
         doubleHit_UI.SetActive(true);
         doubleHit_FVX.SetActive(true);
     }
-    //Á¬»÷¼ÆÊ±Æ÷ Ôİ¶¨10s
+    //è¿å‡»è®¡æ—¶å™¨ æš‚å®š10s
     private IEnumerator TimeFunc(float TimeCount)
     {
         do
@@ -74,23 +74,23 @@ public class DoubleHitManager : MonoBehaviour
         doubleHitScore = 0;
         ClearDoubleHitCount();
         timewait = false;
-        DebugColorRed("ÖØĞÂ¼ÆËãÁ¬»÷");
+        DebugColorRed("é‡æ–°è®¡ç®—è¿å‡»");
     }
 
-    //Çå³ıÁ¬»÷´ÎÊı
+    //æ¸…é™¤è¿å‡»æ¬¡æ•°
     public void ClearDoubleHitCount()
     {
         doubleHitCount = 0;
         doubleHit_UI.SetActive(false);
         doubleHit_FVX.SetActive(false);
-        DebugColorYellow("Á¬»÷ÊıÇåÁã£º" + doubleHitCount);
+        DebugColorYellow("è¿å‡»æ•°æ¸…é›¶ï¼š" + doubleHitCount);
     }
 
-    //ÀÛ¼ÆÁ¬»÷´ÎÊı
+    //ç´¯è®¡è¿å‡»æ¬¡æ•°
     public int DoubleHitTimes()
     {
         doubleHitCount += 1;
-        DebugColorYellow("Êä³ö»÷´òÊı£º" + doubleHitCount);
+        DebugColorYellow("è¾“å‡ºå‡»æ‰“æ•°ï¼š" + doubleHitCount);
         return doubleHitCount;
     }
 
@@ -119,10 +119,10 @@ public class DoubleHitManager : MonoBehaviour
     }
 
 
-    #region DebugLogÑÕÉ«
+    #region DebugLogé¢œè‰²
 
     /// <summary>
-    /// Êä³öºìÉ«Log
+    /// è¾“å‡ºçº¢è‰²Log
     /// </summary>
     public void DebugColorRed(string _log)
     {
@@ -130,7 +130,7 @@ public class DoubleHitManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Êä³ö»ÆÉ«Log
+    /// è¾“å‡ºé»„è‰²Log
     /// </summary>
     public void DebugColorYellow(string _log)
     {

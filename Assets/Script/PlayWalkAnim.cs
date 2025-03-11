@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,7 +26,7 @@ public class PlayWalkAnim : MonoBehaviour
         gO.transform.rotation = rotation1;
     }
 
-    public Transform[] points; // ÉèÖÃÄãµÄ2¸öÄ¿±êµã£¬Ã¿¸öµã°üº¬Î»ÖÃºÍĞı×ªĞÅÏ¢
+    public Transform[] points; // è®¾ç½®ä½ çš„2ä¸ªç›®æ ‡ç‚¹ï¼Œæ¯ä¸ªç‚¹åŒ…å«ä½ç½®å’Œæ—‹è½¬ä¿¡æ¯
     public GameObject gO;
     private int pointIndex = 0;
     public float moveSpeed = 5f;
