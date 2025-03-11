@@ -77,8 +77,13 @@ public class PlayerManager : MonoBehaviour
         float moveVertical = Input.GetAxis("Vertical"); // 获取垂直输入(W/S)
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical); // 创建移动向量
 
+        // 计算目标位置
+        Vector3 targetPosition = transform.position + movement * speed * Time.fixedDeltaTime;
+
+        // 使用MovePosition方法移动刚体
+        rb.MovePosition(targetPosition);
         // 根据输入更新位置
-        player.transform.Translate(movement * speed * Time.deltaTime);
+        //player.transform.Translate(movement * speed * Time.deltaTime);
 
         //旋转锁定
         // 获取当前物体的旋转
