@@ -72,13 +72,22 @@ public class DoubleHitManager : MonoBehaviour
         } while (TimeCount > 0);
 
         doubleHitScore = 0;
-        ClearDoubleHitCount();
+        ClearDHC();
         timewait = false;
         DebugColorRed("重新计算连击");
     }
 
     //清除连击次数
     public void ClearDoubleHitCount()
+    {
+        doubleHitCount = 0;
+        IncentiveSystemUI.Instance.Export_EncouragingContentEn(5);
+        doubleHit_UI.SetActive(false);
+        doubleHit_FVX.SetActive(false);
+        DebugColorYellow("连击数清零：" + doubleHitCount);
+    }
+
+    public void ClearDHC()//时间到了，自然清除连击
     {
         doubleHitCount = 0;
         doubleHit_UI.SetActive(false);
@@ -93,7 +102,6 @@ public class DoubleHitManager : MonoBehaviour
         DebugColorYellow("输出击打数：" + doubleHitCount);
         return doubleHitCount;
     }
-
 
 
     public float RewardT = 10f;

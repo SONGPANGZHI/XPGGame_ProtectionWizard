@@ -6,12 +6,13 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class IncentiveSystemUI : MonoBehaviour
+public class IncentiveSystemUI : Singleton<IncentiveSystemUI>
 {
+
     [SerializeField] private GameObject _gameObject;
     private Camera _camera;
     public GameObject planeObject;
-    private float enableTime;
+    public float enableTime;
     public Text t;
     void Start()
     {
@@ -23,6 +24,37 @@ public class IncentiveSystemUI : MonoBehaviour
         if (Time.time> enableTime)
         {
             planeObject.SetActive(false);
+        }
+        MonitorOther();
+    }
+    public bool hitOne = false;
+    public bool hitTwo = false;
+    public bool hitThree = false;
+    public void MonitorOther()
+    {
+        if (DoubleHitManager.Instance.doubleHitCount == 0)
+        {
+            hitOne = true;
+            hitTwo = true;
+            hitThree = true;
+        }
+        if (DoubleHitManager.Instance.doubleHitCount == 1&& hitOne)//第一次击中
+        {
+            Debug.Log("hitOne");
+            int index = UnityEngine.Random.Range(0, 2);
+            Export_EncouragingContentEn(index);
+            hitOne = false;
+        }
+        else if (DoubleHitManager.Instance.doubleHitCount == 3 && hitTwo)//连续3次
+        {
+            int index = UnityEngine.Random.Range(2, 4);
+            Export_EncouragingContentEn(index);
+            hitTwo = false;
+        }
+        else if (DoubleHitManager.Instance.doubleHitCount == 5 && hitThree)//连续5次
+        {
+            Export_EncouragingContentEn(4);
+            hitThree = false;
         }
     }
     public void Set_enableTime()
@@ -45,8 +77,8 @@ public class IncentiveSystemUI : MonoBehaviour
     }
     public void Set_EncouragingContent()
     {
-        planeObject.SetActive(true);
         Set_enableTime();
+        planeObject.SetActive(true);
         t.text = I_content;
         //Speak.clip = I_contentAudio;
         //Speak.Play();

@@ -272,7 +272,7 @@ public class GameManage : Singleton<GameManage>
                 currentTime = 180;
                 secondNpcHp = 2;
                 ScoreManagement.Instance.TotalScore = 0;
-                DoubleHitManager.Instance.ClearDoubleHitCount();
+                DoubleHitManager.Instance.ClearDHC();
                 currentCount = 0;
                 enemy.SetActive(false);
                 enemySecond.SetActive(false);
