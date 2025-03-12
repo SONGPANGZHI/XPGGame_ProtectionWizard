@@ -5738,15 +5738,15 @@ MonoBehaviour:
   - index: 7
     content: "\u603B\u5206\u7A81\u7834100\u5206\uFF01"
     VFXAUDIO: 1
-    EffectSound: {fileID: 0}
+    EffectSound: {fileID: 8300000, guid: 379bb66060fb94cbeaac20e1421ce065, type: 3}
   - index: 8
     content: "\u603B\u5206\u7A81\u7834200\u5206\uFF01"
     VFXAUDIO: 1
-    EffectSound: {fileID: 0}
+    EffectSound: {fileID: 8300000, guid: 379bb66060fb94cbeaac20e1421ce065, type: 3}
   - index: 9
     content: "\u8BA4\u77E5\u529B\u5347\u7EA7\uFF01\u65B0\u5173\u5361\u5DF2\u89E3\u9501\uFF01"
     VFXAUDIO: 1
-    EffectSound: {fileID: 0}
+    EffectSound: {fileID: 8300000, guid: 379bb66060fb94cbeaac20e1421ce065, type: 3}
   - index: 10
     content: 10
     VFXAUDIO: 0
