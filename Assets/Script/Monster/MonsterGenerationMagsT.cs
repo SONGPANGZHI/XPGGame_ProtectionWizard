@@ -28,6 +28,9 @@ public class MonsterGenerationMagsT : MonoBehaviour
     private void OnDisable()
     {
         CancelInvoke("FristCreateMonter");
+        firstBool = false;
+        secondBool = false;
+        thirdBool = false;
     }
     //第一次生成怪物
     public void FristCreateMonter()
