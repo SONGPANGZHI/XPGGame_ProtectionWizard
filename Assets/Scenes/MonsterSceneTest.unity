@@ -580,7 +580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1237283772631950907, guid: b36c1af63f8c15a42aedbe5b969af7f6, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1237283773111477491, guid: b36c1af63f8c15a42aedbe5b969af7f6, type: 3}
       propertyPath: m_Pivot.x
@@ -4878,31 +4878,58 @@ MonoBehaviour:
   incentiveSS:
   - index: 0
     content: "\u5E72\u5F97\u6F02\u4EAE\uFF01"
+    VFXAUDIO: 0
+    EffectSound: {fileID: 0}
   - index: 1
     content: "\u7CBE\u51C6\u51FA\u51FB\uFF01\u592A\u68D2\u4E86\uFF01"
+    VFXAUDIO: 0
+    EffectSound: {fileID: 0}
   - index: 2
     content: "\u4E09\u8FDE\u51FB\uFF01\u624B\u611F\u706B\u70ED\uFF01"
+    VFXAUDIO: 0
+    EffectSound: {fileID: 0}
   - index: 3
     content: "\u5B8C\u7F8E\u8282\u594F\uFF01\u7EE7\u7EED\u4FDD\u6301\uFF01"
+    VFXAUDIO: 0
+    EffectSound: {fileID: 0}
   - index: 4
     content: "\u6211\u77E5\u9053\u4F60\u80FD\u884C\uFF0C\u679C\u7136\u6CA1\u6709\u8BA9\u6211\u5931\u671B\u3002"
+    VFXAUDIO: 0
+    EffectSound: {fileID: 0}
   - index: 5
     content: "\u522B\u7740\u6025\uFF0C\u5148\u5206\u8FA8\u518D\u51FA\u51FB\uFF01"
+    VFXAUDIO: 0
+    EffectSound: {fileID: 0}
   - index: 6
     content: "\u5931\u8D25\u662F\u8BA4\u77E5\u98DE\u8DC3\u7684\u524D\u594F\uFF01\u7EC8\u6781\u53CD\u51FB\u6A21\u5F0F\u5DF2\u52A0\u8F7D\uFF01"
+    VFXAUDIO: 0
+    EffectSound: {fileID: 0}
   - index: 7
     content: "\u603B\u5206\u7A81\u7834100\u5206\uFF01"
+    VFXAUDIO: 0
+    EffectSound: {fileID: 0}
   - index: 8
     content: "\u603B\u5206\u7A81\u7834200\u5206\uFF01"
+    VFXAUDIO: 0
+    EffectSound: {fileID: 0}
   - index: 9
     content: "\u8BA4\u77E5\u529B\u5347\u7EA7\uFF01\u65B0\u5173\u5361\u5DF2\u89E3\u9501\uFF01"
+    VFXAUDIO: 0
+    EffectSound: {fileID: 0}
   - index: 10
     content: 10
+    VFXAUDIO: 0
+    EffectSound: {fileID: 0}
   - index: 11
     content: 11
+    VFXAUDIO: 0
+    EffectSound: {fileID: 0}
   - index: 12
     content: 12
+    VFXAUDIO: 0
+    EffectSound: {fileID: 0}
   I_content: 
+  Effect: {fileID: 0}
 --- !u!4 &1619064895
 Transform:
   m_ObjectHideFlags: 0

@@ -85,7 +85,8 @@ public class IncentiveSystemUI : Singleton<IncentiveSystemUI>
     [SerializeField]
     private List<IncentiveSystemString> incentiveSS = new List<IncentiveSystemString>();
     public string I_content;
-    //public AudioSource Speak;
+    //public AudioSource Speak;//语音
+    public AudioSource Effect;//音效
     //public AudioClip I_contentAudio;
     //根据
     public void Get_EncouragingContent(int index)
@@ -109,6 +110,13 @@ public class IncentiveSystemUI : Singleton<IncentiveSystemUI>
         //I_contentAudio = foundIndex.contentAudio;
 
         Set_EncouragingContent();
+
+        if (foundIndex.VFXAUDIO)
+        {
+            if (foundIndex.EffectSound == null) return;
+            Effect.clip = foundIndex.EffectSound;
+            Effect.Play();
+        }
     }
 }
 
@@ -117,5 +125,8 @@ public class IncentiveSystemString
 {
     public int index;
     public string content;
-    //public AudioClip contentAudio;
+    //public AudioClip contentAudio;//Content speech
+    public bool VFXAUDIO;
+    [Header("VFXAUDIO为true时请添加效果音效")]
+    public AudioClip EffectSound;
 }
