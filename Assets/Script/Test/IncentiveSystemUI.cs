@@ -1,10 +1,8 @@
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class IncentiveSystemUI : Singleton<IncentiveSystemUI>
 {
@@ -13,7 +11,7 @@ public class IncentiveSystemUI : Singleton<IncentiveSystemUI>
     private Camera _camera;
     public GameObject planeObject;
     public float enableTime;
-    public Text t;
+    public TMP_Text t;
     void Start()
     {
         _camera = Camera.main;
