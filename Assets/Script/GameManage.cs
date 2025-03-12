@@ -84,7 +84,7 @@ public class GameManage : Singleton<GameManage>
             //UpdateCounterText();
         }
 
-        if (ScoreManagement.Instance.TotalScore>= UnlockCredits && whetherUnlock==false)
+        if (ScoreManagement.Instance.TotalScore>= UnlockCredits && whetherUnlock==false&& isFirst==true&&isSecond==false)
         {
             whetherUnlock = true;
             jsonSecond = true;
