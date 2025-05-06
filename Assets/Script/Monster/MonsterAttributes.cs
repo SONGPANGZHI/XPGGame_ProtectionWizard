@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class MonsterAttributes : MonoBehaviour
 {
@@ -48,13 +49,30 @@ public class MonsterAttributes : MonoBehaviour
 
     private GameObject particleTrailInstance;
 
+    [Header("第一关设置")]
+    public bool FirstPassState= false;
+
+    public float waringTime = 2.5f;
+
+    [Header("特殊怪物")]
+    public bool Special = false;
+
+    private float transformDelay = 3f;   // 转换延迟时间
+
+    [SerializeField]
+    private Animator animatorS;
+
+    [SerializeField]
+    private Animator animatorSObj;
+
+    [Header("其他设置")]
     public bool Goodness2;//是否是第二关npc
 
     public bool Evil2;//是否是第二关其他分值小怪   20
 
     public bool Evil3;//是否是第二关其他分值小怪   30
 
-    public int Evil3Int=0;
+    public int Evil3Int=0;//草丛随机怪
 
     public bool TriggerOnce = false;
 
@@ -65,9 +83,51 @@ public class MonsterAttributes : MonoBehaviour
         WarningTipShow();
         Evil3Int = Random.Range(1, 3);
     }
+
+
     private void Update()
     {
         MonsterState();
+    }
+
+    //转换为Goodness类型
+    private void TransformToGoodness()
+    {
+        // 创建动画序列
+        Sequence sequence = DOTween.Sequence();
+
+        monterPrefab.transform.GetChild(1).GetComponent<CapsuleCollider>().enabled = false;
+        // 第一步：播放死亡动画并后移
+        sequence.AppendCallback(() => {
+
+
+            monterPrefab.transform.GetChild(2).gameObject.SetActive(true);
+
+            sequence.AppendInterval(0.5f);
+
+            animatorE.SetTrigger("Die");
+            monterPrefab.transform.GetChild(1).gameObject.transform
+                .DOMove(monterPrefab.transform.GetChild(1).gameObject.transform.position + Vector3.forward*2, 1f);
+        });
+
+        // 第二步：0.25秒后播放消失动画
+        sequence.AppendInterval(1.5f);
+        sequence.AppendCallback(() => {
+            animatorObj.Play("Die");
+        });
+
+        // 第三步：再等待0.25秒后执行剩余操作
+        sequence.AppendInterval(0.5f);
+        sequence.AppendCallback(() => {
+            monterType = MonterType.Goodness;
+            animatorE = animatorS;
+            animatorObj = animatorSObj;
+            monterPrefab.transform.GetChild(1).gameObject.SetActive(false);
+            //monterPrefab.transform.GetChild(2).gameObject.SetActive(true);
+        });
+
+        // 可以在这里添加转换特效
+
     }
 
     //先出预警提示
@@ -75,10 +135,18 @@ public class MonsterAttributes : MonoBehaviour
     {
         warningTip.SetActive(true);
         monterPrefab.transform.GetChild(1).gameObject.SetActive(false);
-        Invoke("WarningTipEnd", 2f);
+
+        if (FirstPassState)
+        {
+            Invoke("WarningTipEnd", waringTime);
+        }
+        else
+        {
+            Invoke("WarningTipEnd", 2f);
+        }
     }
 
-    //1.5s后 预警结束开始生成怪
+    //x秒后 预警结束开始生成怪
     public void WarningTipEnd()
     {
         Invoke("PlayDiappear", TimeToLive());
@@ -86,11 +154,25 @@ public class MonsterAttributes : MonoBehaviour
 
 
     //存活时间s
-    public int TimeToLive()
+    public float TimeToLive()
     {
         warningTip.SetActive(false);
         monterPrefab.transform.GetChild(1).gameObject.SetActive(true);
-        int liveTime = Random.Range(5,8);
+
+        if (Special)
+        {
+            Invoke("TransformToGoodness", transformDelay);
+        }
+
+        float liveTime = 0;
+        if (FirstPassState)
+        {
+            liveTime = 11.5f;
+        }
+        else
+        {
+            liveTime = Random.Range(5, 8);
+        }
         return liveTime;
     }
 
@@ -104,15 +186,15 @@ public class MonsterAttributes : MonoBehaviour
 
     }
 
-    //播放消失动画
+    //播放消失动画---时间到了消失
     public void PlayDiappear()
     {
         if (!dieAnim)
         {
+            dieAnim=true;
             animatorObj.Play("Disappear");
-            Invoke("DestroyMonter", 1f);
+            Invoke("DestroyMonter", 0.5f);
         }
-        
     }
 
     public void MonsterState()
@@ -142,6 +224,7 @@ public class MonsterAttributes : MonoBehaviour
     //击打得分、扣分
     public void HitScore()
     {
+        if (dieAnim) return;
         monterAnimType = MonterAnimType.Die;
         dieAnim = true;
         Invoke("SetColli", 1.5f);//时间可以延长点
@@ -232,7 +315,10 @@ public class MonsterAttributes : MonoBehaviour
 
         while (elapsedTime < destroyTime)
         {
-            particleTrailInstance.transform.position = Vector3.Lerp(particleTrailInstance.transform.position, particePos, Time.deltaTime * 3f);
+            if (particePos != null)
+            {
+                particleTrailInstance.transform.position = Vector3.Lerp(particleTrailInstance.transform.position, particePos, Time.deltaTime * 3f);
+            }
             //particleTrailInstance.transform.localScale = Vector3.Lerp(particleTrailInstance.transform.localScale, new Vector3(0.5f,0.5f,0.5f), Time.deltaTime * 3f);
             elapsedTime += Time.deltaTime;
             yield return null;

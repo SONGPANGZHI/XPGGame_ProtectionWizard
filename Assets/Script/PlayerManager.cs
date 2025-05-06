@@ -102,8 +102,7 @@ public class PlayerManager : MonoBehaviour
         //其他
 
 
-        //镜头抖动
-        Invoke("Shake", 0.5f);
+
         
         animatorP.SetTrigger("Attack");
         if (attackCube.activeSelf==false)
@@ -112,7 +111,6 @@ public class PlayerManager : MonoBehaviour
             canMove = false;
             rb.velocity = Vector3.zero;
             canAttack = false;
-            SoundManagement.Instance.PlaySFX(0);
             deactivateTriggerTime = Time.time + attackTime;
         }
     }
@@ -128,6 +126,9 @@ public class PlayerManager : MonoBehaviour
 
         if (isProcessing) return;
 
+        //镜头抖动
+        Invoke("Shake", 0.5f);
+        SoundManagement.Instance.PlaySFX(0);
         switch (other.gameObject.tag)
         {
             case "Goodness":

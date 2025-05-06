@@ -895,6 +895,8 @@ MonoBehaviour:
   warningTip: {fileID: 5653911894222497126}
   particleObj: {fileID: 7099146207540236011, guid: 4034784fd6bde8d41bc37ed796f7606e, type: 3}
   particePos: {x: 10, y: 6.6, z: 0}
+  FirstPassState: 1
+  waringTime: 2.5
   Goodness2: 0
   Evil2: 0
   Evil3: 0
