@@ -57,7 +57,7 @@ public class MonsterAttributes : MonoBehaviour
     [Header("特殊怪物")]
     public bool Special = false;
 
-    private float transformDelay = 3f;   // 转换延迟时间
+    public float transformDelay = 3f;   // 转换延迟时间
 
     [SerializeField]
     private Animator animatorS;
@@ -77,7 +77,12 @@ public class MonsterAttributes : MonoBehaviour
     public bool TriggerOnce = false;
 
     private bool dieAnim;
-    
+
+    private Sequence sequence;
+
+    public delegate void MonsterDestroyedHandler(GameObject monster);
+    public event MonsterDestroyedHandler OnMonsterDestroyed;
+
     private void OnEnable()
     {
         WarningTipShow();
@@ -93,37 +98,37 @@ public class MonsterAttributes : MonoBehaviour
     //转换为Goodness类型
     private void TransformToGoodness()
     {
+        if (dieAnim) return;
         // 创建动画序列
-        Sequence sequence = DOTween.Sequence();
+        sequence = DOTween.Sequence();
+
+        monterType = MonterType.Goodness;
 
         monterPrefab.transform.GetChild(1).GetComponent<CapsuleCollider>().enabled = false;
         // 第一步：播放死亡动画并后移
         sequence.AppendCallback(() => {
-
-
             monterPrefab.transform.GetChild(2).gameObject.SetActive(true);
 
-            sequence.AppendInterval(0.5f);
-
             animatorE.SetTrigger("Die");
+
+            animatorE = animatorS;
+
             monterPrefab.transform.GetChild(1).gameObject.transform
                 .DOMove(monterPrefab.transform.GetChild(1).gameObject.transform.position + Vector3.forward*2, 1f);
         });
 
         // 第二步：0.25秒后播放消失动画
-        sequence.AppendInterval(1.5f);
+        sequence.AppendInterval(1f);
         sequence.AppendCallback(() => {
             animatorObj.Play("Die");
+            animatorObj = animatorSObj;
         });
 
         // 第三步：再等待0.25秒后执行剩余操作
         sequence.AppendInterval(0.5f);
         sequence.AppendCallback(() => {
-            monterType = MonterType.Goodness;
-            animatorE = animatorS;
-            animatorObj = animatorSObj;
+
             monterPrefab.transform.GetChild(1).gameObject.SetActive(false);
-            //monterPrefab.transform.GetChild(2).gameObject.SetActive(true);
         });
 
         // 可以在这里添加转换特效
@@ -210,6 +215,12 @@ public class MonsterAttributes : MonoBehaviour
     {
         DelayDestroyMonter();
     }
+
+    private void OnDestroy()
+    {
+        sequence.Kill();
+    }
+
     public void DelayDestroyMonter()
     {
         Destroy(monterPrefab);
@@ -219,14 +230,26 @@ public class MonsterAttributes : MonoBehaviour
         animatorObj.Play("Die");
     }
 
+    public MonterType GetMonterType()
+    {
+        return monterType;
+    }
+
     //动画播放
     //3d得分UI
     //击打得分、扣分
     public void HitScore()
     {
         if (dieAnim) return;
-        monterAnimType = MonterAnimType.Die;
+
         dieAnim = true;
+
+        monterAnimType = MonterAnimType.Die;
+        if (FirstPassState)
+        {
+            OnMonsterDestroyed?.Invoke(monterPrefab);
+        }
+
         Invoke("SetColli", 1.5f);//时间可以延长点
         Invoke("DelayDestroyMonter",2f);//时间可以延长点
         Invoke("PlayAnimatorDie", 0.5f);
